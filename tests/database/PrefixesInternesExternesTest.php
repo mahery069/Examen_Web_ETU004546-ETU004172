@@ -30,11 +30,12 @@ final class PrefixesInternesExternesTest extends CIUnitTestCase
         $this->testDb->query("DROP TABLE IF EXISTS {$table}");
         $this->testDb->query("
             CREATE TABLE {$table} (
-                id            INTEGER PRIMARY KEY AUTOINCREMENT,
-                prefixe       VARCHAR(3) NOT NULL UNIQUE,
-                libelle       VARCHAR(50),
-                is_internal   BOOLEAN DEFAULT TRUE NOT NULL,
-                date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+                id                      INTEGER PRIMARY KEY AUTOINCREMENT,
+                prefixe                 VARCHAR(3) NOT NULL UNIQUE,
+                libelle                 VARCHAR(50),
+                is_internal             BOOLEAN DEFAULT TRUE NOT NULL,
+                commission_pourcentage  DECIMAL(5,2) NOT NULL DEFAULT 0,
+                date_creation           DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         ");
     }

@@ -62,10 +62,16 @@
                                 </div>
                                 <div class="flex flex-col gap-1">
                                     <label class="text-xs text-muted-foreground">Type</label>
-                                    <select name="is_internal" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                                    <select name="is_internal" onchange="toggleCommissionField(this)" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                                         <option value="1" <?= (bool) $p['is_internal'] ? 'selected' : '' ?>>Interne</option>
                                         <option value="0" <?= !(bool) $p['is_internal'] ? 'selected' : '' ?>>Externe</option>
                                     </select>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label class="text-xs text-muted-foreground">Commission (%)</label>
+                                    <input type="number" step="0.01" min="0" max="100" name="commission_pourcentage"
+                                           value="<?= esc($p['commission_pourcentage']) ?>" disabled
+                                           class="w-24 px-3 py-1.5 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-40">
                                 </div>
                                 <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
                                     <?= icon('save', 'size-4') ?> Enregistrer
@@ -97,6 +103,9 @@
                                 <span class="inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full bg-secondary-10 text-muted-foreground">
                                     Externe
                                 </span>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-mono font-medium px-2 py-1 rounded-full bg-accent text-accent-foreground">
+                                    Commission <?= esc(rtrim(rtrim(number_format((float) $p['commission_pourcentage'], 2, '.', ''), '0'), '.')) ?>%
+                                </span>
                                 <button type="button" onclick="toggleEdit(<?= (int) $p['id'] ?>)" class="size-8 rounded-md hover:bg-muted grid place-items-center text-muted-foreground hover:text-primary transition-colors">
                                     <?= icon('pencil', 'size-4') ?>
                                 </button>
@@ -124,10 +133,16 @@
                                 </div>
                                 <div class="flex flex-col gap-1">
                                     <label class="text-xs text-muted-foreground">Type</label>
-                                    <select name="is_internal" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                                    <select name="is_internal" onchange="toggleCommissionField(this)" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                                         <option value="1" <?= (bool) $p['is_internal'] ? 'selected' : '' ?>>Interne</option>
                                         <option value="0" <?= !(bool) $p['is_internal'] ? 'selected' : '' ?>>Externe</option>
                                     </select>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label class="text-xs text-muted-foreground">Commission (%)</label>
+                                    <input type="number" step="0.01" min="0" max="100" name="commission_pourcentage"
+                                           value="<?= esc($p['commission_pourcentage']) ?>"
+                                           class="w-24 px-3 py-1.5 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-40">
                                 </div>
                                 <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
                                     <?= icon('save', 'size-4') ?> Enregistrer
@@ -156,10 +171,16 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-xs text-muted-foreground">Type</label>
-                    <select name="is_internal" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                    <select name="is_internal" onchange="toggleCommissionField(this)" class="px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
                         <option value="1" selected>Interne</option>
                         <option value="0">Externe</option>
                     </select>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs text-muted-foreground">Commission (%)</label>
+                    <input type="number" step="0.01" min="0" max="100" name="commission_pourcentage" placeholder="0.00"
+                           value="<?= esc(old('commission_pourcentage')) ?>" disabled
+                           class="w-24 px-3 py-1.5 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-40">
                 </div>
                 <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
                     <?= icon('plus', 'size-4') ?> Ajouter
@@ -198,6 +219,23 @@
     function toggleEdit(id) {
         document.getElementById('view-row-' + id).classList.toggle('hidden');
         document.getElementById('edit-row-' + id).classList.toggle('hidden');
+    }
+
+    // Le champ "Commission (%)" n'a de sens que pour un préfixe externe :
+    // on l'active/désactive selon le type sélectionné dans le même formulaire.
+    function toggleCommissionField(selectEl) {
+        var commissionInput = selectEl.closest('form').querySelector('input[name="commission_pourcentage"]');
+
+        if (! commissionInput) {
+            return;
+        }
+
+        var estExterne = selectEl.value === '0';
+        commissionInput.disabled = ! estExterne;
+
+        if (! estExterne) {
+            commissionInput.value = '0';
+        }
     }
 </script>
 <?= $this->endSection() ?>

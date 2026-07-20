@@ -6,6 +6,7 @@ use App\Models\BaremeFraisModel;
 use App\Models\ClientModel;
 use App\Models\CompteModel;
 use App\Models\OperationModel;
+use App\Models\PrefixeOperateurModel;
 use App\Models\TypeOperationModel;
 
 /**
@@ -274,7 +275,14 @@ class Client extends BaseController
         }
 
         $frais = (float) $tranche['frais'];
-        $total = $montant + $frais;
+
+        // Commission inter-opérateur : s'applique en plus des frais habituels
+        // du barème lorsque le destinataire est sur un préfixe externe
+        // (numéro d'un autre opérateur).
+        $prefixeModel = new PrefixeOperateurModel();
+        $commission   = $prefixeModel->calculerCommission($destinataire['prefixe_id'] ?? null, $montant);
+
+        $total = $montant + $frais + $commission;
 
         $compteExpediteur = $compteModel->find($compteExpediteurId);
 
@@ -303,6 +311,7 @@ class Client extends BaseController
             'type_operation_id'      => $typeTransfert['id'],
             'montant'                => $montant,
             'frais'                  => $frais,
+            'commission'             => $commission,
         ]);
 
         $db->transComplete();
@@ -311,9 +320,13 @@ class Client extends BaseController
             return redirect()->back()->withInput()->with('erreur', 'Le transfert a échoué, veuillez réessayer.');
         }
 
+        $messageFrais = 'frais : ' . number_format($frais, 2, ',', ' ') . ' Ar';
+        if ($commission > 0) {
+            $messageFrais .= ' + commission inter-opérateur : ' . number_format($commission, 2, ',', ' ') . ' Ar';
+        }
+
         return redirect()->to('/client/solde')->with('succes', 'Transfert de '
-            . number_format($montant, 2, ',', ' ') . ' Ar (frais : '
-            . number_format($frais, 2, ',', ' ') . ' Ar) vers ' . $numeroDestinataire . ' effectué avec succès.');
+            . number_format($montant, 2, ',', ' ') . ' Ar (' . $messageFrais . ') vers ' . $numeroDestinataire . ' effectué avec succès.');
     }
 
     /**
@@ -360,7 +373,7 @@ class Client extends BaseController
                     if ($estExpediteur) {
                         $libelle      = 'Transfert envoyé';
                         $contrepartie = $operation['numero_destinataire'];
-                        $montantSigne = -((float) $operation['montant'] + (float) $operation['frais']);
+                        $montantSigne = -((float) $operation['montant'] + (float) $operation['frais'] + (float) $operation['commission']);
                     } else {
                         $libelle      = 'Transfert reçu';
                         $contrepartie = $operation['numero_expediteur'];
@@ -379,6 +392,7 @@ class Client extends BaseController
                 'contrepartie'  => $contrepartie,
                 'montant'       => (float) $operation['montant'],
                 'frais'         => (float) $operation['frais'],
+                'commission'    => (float) ($operation['commission'] ?? 0),
                 'montant_signe' => $montantSigne,
                 'date'          => $operation['date_operation'],
             ];

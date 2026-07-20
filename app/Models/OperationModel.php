@@ -16,6 +16,7 @@ class OperationModel extends Model
         'type_operation_id',
         'montant',
         'frais',
+        'commission',
     ];
 
     /**
@@ -51,7 +52,7 @@ class OperationModel extends Model
     public function recentWithDetails(int $limit = 5): array
     {
         return $this->db->table('operations o')
-            ->select('o.id, o.montant, o.frais, o.date_operation, t.code, t.libelle, c.numero_telephone')
+            ->select('o.id, o.montant, o.frais, o.commission, o.date_operation, t.code, t.libelle, c.numero_telephone')
             ->join('types_operation t', 't.id = o.type_operation_id')
             ->join('comptes cpt', 'cpt.id = o.compte_id')
             ->join('clients c', 'c.id = cpt.client_id')
@@ -71,7 +72,7 @@ class OperationModel extends Model
     public function historiqueDuCompte(int $compteId, ?int $limite = null): array
     {
         $builder = $this->db->table('operations o')
-            ->select('o.id, o.montant, o.frais, o.date_operation, '
+            ->select('o.id, o.montant, o.frais, o.commission, o.date_operation, '
                 . 'o.compte_id, o.compte_destinataire_id, '
                 . 't.code AS type_code, t.libelle AS type_libelle, '
                 . 'ce.numero_telephone AS numero_expediteur, '

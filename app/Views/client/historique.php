@@ -12,6 +12,7 @@
                     <th class="px-6 py-3 text-left font-medium">Contact</th>
                     <th class="px-6 py-3 text-right font-medium">Montant</th>
                     <th class="px-6 py-3 text-right font-medium">Frais</th>
+                    <th class="px-6 py-3 text-right font-medium">Commission</th>
                     <th class="px-6 py-3 text-right font-medium">Effet sur le solde</th>
                     <th class="px-6 py-3 text-right font-medium">Date</th>
                 </tr>
@@ -28,6 +29,7 @@
                         <td class="px-6 py-3.5 font-mono text-xs"><?= $ligne['contrepartie'] !== null ? esc($ligne['contrepartie']) : '—' ?></td>
                         <td class="px-6 py-3.5 text-right font-mono"><?= number_format($ligne['montant'], 2, ',', ' ') ?> Ar</td>
                         <td class="px-6 py-3.5 text-right font-mono text-xs text-muted-foreground"><?= number_format($ligne['frais'], 2, ',', ' ') ?> Ar</td>
+                        <td class="px-6 py-3.5 text-right font-mono text-xs text-muted-foreground"><?= $ligne['commission'] > 0 ? number_format($ligne['commission'], 2, ',', ' ') . ' Ar' : '—' ?></td>
                         <td class="px-6 py-3.5 text-right font-mono font-semibold <?= $ligne['montant_signe'] >= 0 ? 'text-success' : 'text-destructive' ?>">
                             <?= $ligne['montant_signe'] >= 0 ? '+' : '' ?><?= number_format($ligne['montant_signe'], 2, ',', ' ') ?> Ar
                         </td>

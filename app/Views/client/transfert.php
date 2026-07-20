@@ -27,6 +27,7 @@
 
     <p class="text-xs text-muted-foreground mt-4 text-center">
         Des frais sont automatiquement calculés selon le barème en vigueur et débités de votre compte, en plus du montant transféré.
+        Si le destinataire est abonné chez un autre opérateur, une commission supplémentaire peut s'appliquer.
     </p>
 </div>
 <?= $this->endSection() ?>
