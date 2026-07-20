@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\BaremeFraisModel;
 use App\Models\CompteModel;
 use App\Models\OperationModel;
 use App\Models\TypeOperationModel;
@@ -9,8 +10,8 @@ use App\Models\TypeOperationModel;
 /**
  * Espace du client connecté.
  *
- * NB : à ce stade, les vues "Retrait", "Transfert" et
- * "Historique" viendront compléter cet espace dans les prochaines étapes.
+ * NB : à ce stade, les vues "Transfert" et "Historique" viendront
+ * compléter cet espace dans les prochaines étapes.
  */
 class Client extends BaseController
 {
@@ -103,5 +104,88 @@ class Client extends BaseController
         }
 
         return redirect()->to('/client/solde')->with('succes', 'Dépôt de ' . number_format($montant, 2, ',', ' ') . ' Ar effectué avec succès.');
+    }
+
+    /**
+     * Affiche le formulaire de retrait.
+     */
+    public function retrait()
+    {
+        return view('client/retrait');
+    }
+
+    /**
+     * Traite le retrait : vérifie le solde, applique les frais selon le
+     * barème correspondant au montant, débite le compte (montant + frais)
+     * et enregistre l'opération.
+     */
+    public function retirer()
+    {
+        $rules = [
+            'montant' => [
+                'label' => 'Montant',
+                'rules' => 'required|numeric|greater_than[0]',
+                'errors' => [
+                    'required'     => 'Veuillez saisir un montant.',
+                    'numeric'      => 'Le montant doit être un nombre.',
+                    'greater_than' => 'Le montant doit être supérieur à 0.',
+                ],
+            ],
+        ];
+
+        if (! $this->validate($rules)) {
+            return redirect()->back()->withInput()->with('erreurs', $this->validator->getErrors());
+        }
+
+        $montant  = (float) $this->request->getPost('montant');
+        $compteId = (int) session()->get('compte_id');
+
+        $typeOperationModel = new TypeOperationModel();
+        $typeRetrait         = $typeOperationModel->trouverParCode('retrait');
+
+        $baremeFraisModel = new BaremeFraisModel();
+        $tranche          = $baremeFraisModel->trouverTranche($typeRetrait['id'], $montant);
+
+        if ($tranche === null) {
+            return redirect()->back()->withInput()->with('erreur', "Aucun barème de frais ne correspond à ce montant. Veuillez contacter l'opérateur.");
+        }
+
+        $frais = (float) $tranche['frais'];
+        $total = $montant + $frais;
+
+        $compteModel = new CompteModel();
+        $compte      = $compteModel->find($compteId);
+
+        if ((float) $compte['solde'] < $total) {
+            return redirect()->back()->withInput()->with('erreur', 'Solde insuffisant. Montant + frais requis : '
+                . number_format($total, 2, ',', ' ') . ' Ar (solde actuel : '
+                . number_format((float) $compte['solde'], 2, ',', ' ') . ' Ar).');
+        }
+
+        $operationModel = new OperationModel();
+
+        $db = db_connect();
+        $db->transStart();
+
+        $compteModel->update($compteId, [
+            'solde' => $compte['solde'] - $total,
+        ]);
+
+        $operationModel->insert([
+            'compte_id'         => $compteId,
+            'type_operation_id' => $typeRetrait['id'],
+            'montant'           => $montant,
+            'frais'             => $frais,
+        ]);
+
+        $db->transComplete();
+
+        if (! $db->transStatus()) {
+            return redirect()->back()->withInput()->with('erreur', 'Le retrait a échoué, veuillez réessayer.');
+        }
+
+        return redirect()->to('/client/solde')->with('succes', 'Retrait de '
+            . number_format($montant, 2, ',', ' ') . ' Ar (frais : '
+            . number_format($frais, 2, ',', ' ') . ' Ar) effectué avec succès.');
     }
 }

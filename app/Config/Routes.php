@@ -16,4 +16,6 @@ $routes->group('client', ['filter' => 'clientAuth'], static function ($routes) {
     $routes->get('solde', 'Client::solde', ['as' => 'solde']);
     $routes->get('depot', 'Client::depot', ['as' => 'depot']);
     $routes->post('depot', 'Client::deposer', ['as' => 'deposer']);
+    $routes->get('retrait', 'Client::retrait', ['as' => 'retrait']);
+    $routes->post('retrait', 'Client::retirer', ['as' => 'retirer']);
 });

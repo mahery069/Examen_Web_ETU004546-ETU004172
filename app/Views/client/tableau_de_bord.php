@@ -12,7 +12,7 @@
     <ul>
         <li><a href="<?= url_to('solde') ?>">Voir mon solde</a></li>
         <li><a href="<?= url_to('depot') ?>">Effectuer un dépôt</a></li>
-        <li>Retrait : à venir</li>
+        <li><a href="<?= url_to('retrait') ?>">Effectuer un retrait</a></li>
         <li>Transfert : à venir</li>
         <li>Historique : à venir</li>
     </ul>
