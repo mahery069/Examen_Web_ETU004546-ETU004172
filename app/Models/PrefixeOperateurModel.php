@@ -10,12 +10,13 @@ class PrefixeOperateurModel extends Model
     protected $primaryKey       = 'id';
     protected $returnType       = 'array';
     protected $useTimestamps    = false;
-    protected $allowedFields    = ['prefixe', 'libelle'];
+    protected $allowedFields    = ['prefixe', 'libelle', 'is_internal'];
 
     protected $validationRules = [
         'id'      => 'permit_empty|is_natural_no_zero',
         'prefixe' => 'required|regex_match[/^[0-9]{3}$/]|is_unique[prefixes_operateur.prefixe,id,{id}]',
         'libelle' => 'permit_empty|max_length[50]',
+        'is_internal' => 'permit_empty|in_list[0,1]',
     ];
 
     protected $validationMessages = [
