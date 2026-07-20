@@ -28,6 +28,13 @@ abstract class BaseController extends Controller
     // protected $session;
 
     /**
+     * Helpers to be loaded automatically for every controller extending this one.
+     *
+     * @var list<string>
+     */
+    protected $helpers = ['url', 'form', 'icon'];
+
+    /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
