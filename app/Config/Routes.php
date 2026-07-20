@@ -18,4 +18,6 @@ $routes->group('admin', function ($routes) {
     $routes->post('baremes', 'Admin\BaremesFraisController::store');
     $routes->post('baremes/(:num)/update', 'Admin\BaremesFraisController::update/$1');
     $routes->post('baremes/(:num)/delete', 'Admin\BaremesFraisController::delete/$1');
+
+    $routes->get('gains', 'Admin\GainsController::index');
 });
