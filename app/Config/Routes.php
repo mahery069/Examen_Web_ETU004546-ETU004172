@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Auth::index');
+$routes->get('/', 'Home::index');
 
 // Authentification côté opérateur (back-office) — non protégée par le filtre
 $routes->get('admin/login', 'Admin\AuthController::showLogin');

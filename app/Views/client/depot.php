@@ -1,38 +1,24 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Dépôt</title>
-</head>
-<body>
-    <h1>Effectuer un dépôt</h1>
+<?= $this->extend('client/layout') ?>
 
-    <?php if (session()->getFlashdata('erreur')) : ?>
-        <p><?= esc(session()->getFlashdata('erreur')) ?></p>
-    <?php endif; ?>
+<?= $this->section('content') ?>
+<div class="max-w-md">
+    <div class="bg-card border border-border rounded-xl p-6">
+        <div class="size-10 rounded-lg bg-success-10 text-success grid place-items-center mb-4"><?= icon('arrow-down-right', 'size-5') ?></div>
+        <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Montant à déposer</h2>
 
-    <?php if (session()->getFlashdata('erreurs')) : ?>
-        <ul>
-            <?php foreach (session()->getFlashdata('erreurs') as $erreur) : ?>
-                <li><?= esc($erreur) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
+        <form class="space-y-4" action="<?= url_to('deposer') ?>" method="post">
+            <div class="flex flex-col gap-1.5">
+                <label for="montant" class="text-xs font-medium text-muted-foreground">Montant (Ar)</label>
+                <input type="number" step="0.01" min="0" id="montant" name="montant" placeholder="10000"
+                       value="<?= esc(old('montant')) ?>"
+                       class="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring">
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+                <?= icon('check', 'size-4') ?> Déposer
+            </button>
+        </form>
+    </div>
 
-    <form action="<?= url_to('deposer') ?>" method="post">
-        <label for="montant">Montant à déposer</label>
-        <input
-            type="text"
-            id="montant"
-            name="montant"
-            placeholder="10000"
-            value="<?= old('montant') ?>"
-        >
-        <button type="submit">Déposer</button>
-    </form>
-
-    <p>
-        <a href="<?= url_to('tableau_de_bord') ?>">Retour au tableau de bord</a>
-    </p>
-</body>
-</html>
+    <p class="text-xs text-muted-foreground mt-4 text-center">Aucun frais n'est appliqué sur les dépôts.</p>
+</div>
+<?= $this->endSection() ?>

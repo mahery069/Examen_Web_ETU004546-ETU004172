@@ -1,60 +1,40 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Tableau de bord</title>
-</head>
-<body>
-    <h1>Tableau de bord</h1>
+<?= $this->extend('client/layout') ?>
 
-    <p>Numéro de téléphone : <?= esc($numero_telephone) ?></p>
+<?= $this->section('content') ?>
+<div class="bg-foreground text-background rounded-xl p-6 mb-8">
+    <div class="text-xs uppercase tracking-widest opacity-60 mb-2">Numéro connecté</div>
+    <div class="text-2xl font-bold tracking-tight font-mono"><?= esc($numero_telephone) ?></div>
+</div>
 
-    <h2>Solde actuel</h2>
-    <p><?= esc(number_format((float) $solde, 2, ',', ' ')) ?> Ar</p>
-    <p><a href="<?= url_to('solde') ?>">Voir le détail</a></p>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+    <a href="<?= url_to('solde') ?>" class="bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all">
+        <div class="size-10 rounded-lg bg-primary-10 text-primary grid place-items-center mb-3"><?= icon('wallet', 'size-5') ?></div>
+        <div class="font-medium mb-1">Mon solde</div>
+        <div class="text-xs text-muted-foreground">Voir le solde actuel de votre compte.</div>
+    </a>
 
-    <h2>Actions rapides</h2>
-    <ul>
-        <li><a href="<?= url_to('depot') ?>">Effectuer un dépôt</a></li>
-        <li><a href="<?= url_to('retrait') ?>">Effectuer un retrait</a></li>
-        <li><a href="<?= url_to('transfert') ?>">Effectuer un transfert</a></li>
-    </ul>
+    <a href="<?= url_to('depot') ?>" class="bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all">
+        <div class="size-10 rounded-lg bg-success-10 text-success grid place-items-center mb-3"><?= icon('arrow-down-right', 'size-5') ?></div>
+        <div class="font-medium mb-1">Dépôt</div>
+        <div class="text-xs text-muted-foreground">Créditez votre compte instantanément.</div>
+    </a>
 
-    <h2>Dernières opérations</h2>
-    <?php if (empty($lignes)) : ?>
-        <p>Aucune opération pour le moment.</p>
-    <?php else : ?>
-        <table border="1" cellpadding="5">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Contact</th>
-                    <th>Montant</th>
-                    <th>Frais</th>
-                    <th>Effet sur le solde</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($lignes as $ligne) : ?>
-                    <tr>
-                        <td><?= esc($ligne['date']) ?></td>
-                        <td><?= esc($ligne['libelle']) ?></td>
-                        <td><?= $ligne['contrepartie'] !== null ? esc($ligne['contrepartie']) : '-' ?></td>
-                        <td><?= esc(number_format($ligne['montant'], 2, ',', ' ')) ?> Ar</td>
-                        <td><?= esc(number_format($ligne['frais'], 2, ',', ' ')) ?> Ar</td>
-                        <td>
-                            <?= $ligne['montant_signe'] >= 0 ? '+' : '' ?><?= esc(number_format($ligne['montant_signe'], 2, ',', ' ')) ?> Ar
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-        <p><a href="<?= url_to('historique') ?>">Voir tout l'historique</a></p>
-    <?php endif; ?>
+    <a href="<?= url_to('retrait') ?>" class="bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all">
+        <div class="size-10 rounded-lg bg-destructive-10 text-destructive grid place-items-center mb-3"><?= icon('arrow-up-right', 'size-5') ?></div>
+        <div class="font-medium mb-1">Retrait</div>
+        <div class="text-xs text-muted-foreground">Retirez de l'argent (frais selon barème).</div>
+    </a>
 
-    <p>
-        <a href="<?= url_to('logout') ?>">Se déconnecter</a>
-    </p>
-</body>
-</html>
+    <a href="<?= url_to('transfert') ?>" class="bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all">
+        <div class="size-10 rounded-lg bg-accent text-accent-foreground grid place-items-center mb-3"><?= icon('arrow-left-right', 'size-5') ?></div>
+        <div class="font-medium mb-1">Transfert</div>
+        <div class="text-xs text-muted-foreground">Envoyez de l'argent à un autre client.</div>
+    </a>
+</div>
+
+<div class="mt-6">
+    <a href="<?= url_to('historique') ?>" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+        <?= icon('clock', 'size-4') ?> Voir l'historique complet des opérations
+    </a>
+</div>
+<?= $this->endSection() ?>

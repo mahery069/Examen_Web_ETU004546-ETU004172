@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<?php $title = 'Connexion opérateur'; ?>
+<?php $this->setData(['title' => 'Connexion opérateur']); ?>
 <?= $this->include('admin/_theme_head') ?>
 </head>
 <body class="bg-background text-foreground antialiased">
