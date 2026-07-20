@@ -25,10 +25,16 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public array $default = [
+        'DSN'         => '',
+        'hostname'    => 'localhost',
+        'username'    => '',
+        'password'    => '',
         'database'    => 'database.db',
         'DBDriver'    => 'SQLite3',
         'DBPrefix'    => '',
+        'pConnect'    => false,
         'DBDebug'     => true,
+        'charset'     => 'utf8',
         'swapPre'     => '',
         'failover'    => [],
         'foreignKeys' => true,

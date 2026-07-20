@@ -11,4 +11,12 @@ class TypeOperationModel extends Model
     protected $returnType    = 'array';
     protected $useTimestamps = false;
     protected $allowedFields = ['code', 'libelle'];
+
+    /**
+     * Recherche un type d'opération par son code ('depot', 'retrait', 'transfert').
+     */
+    public function trouverParCode(string $code): ?array
+    {
+        return $this->where('code', $code)->first();
+    }
 }

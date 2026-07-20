@@ -30,4 +30,16 @@ class PrefixeOperateurModel extends Model
     ];
 
     protected $skipValidation = false;
+    protected $useSoftDeletes   = false;
+    protected $useTimestamps    = false;
+    protected $allowedFields    = ['prefixe', 'libelle'];
+
+    /**
+     * Vérifie si un préfixe (les 3 premiers chiffres d'un numéro) est
+     * référencé comme préfixe opérateur valide.
+     */
+    public function prefixeExiste(string $prefixe): bool
+    {
+        return $this->where('prefixe', $prefixe)->first() !== null;
+    }
 }

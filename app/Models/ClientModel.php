@@ -31,5 +31,10 @@ class ClientModel extends Model
         }
 
         return $builder->get()->getResultArray();
+     * Recherche un client par son numéro de téléphone.
+     */
+    public function trouverParNumero(string $numeroTelephone): ?array
+    {
+        return $this->where('numero_telephone', $numeroTelephone)->first();
     }
 }
