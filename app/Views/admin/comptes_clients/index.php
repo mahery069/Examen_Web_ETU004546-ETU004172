@@ -1,88 +1,66 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Situation des comptes clients</title>
-    <style>
-        body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; margin: 0; padding: 0; color: #222; }
-        .container { max-width: 720px; margin: 40px auto; padding: 0 20px; }
-        h1 { font-size: 22px; margin-bottom: 4px; }
-        h2 { font-size: 16px; margin-top: 0; margin-bottom: 16px; }
-        .subtitle { color: #666; margin-bottom: 24px; font-size: 14px; }
-        .card { background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); padding: 20px; margin-bottom: 24px; }
-        form.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
-        .field { display: flex; flex-direction: column; gap: 4px; }
-        .field label { font-size: 12px; color: #555; }
-        .field input { padding: 8px 10px; border: 1px solid #ccd0d5; border-radius: 5px; font-size: 14px; width: 220px; }
-        button, .btn { padding: 8px 16px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; }
-        .btn-primary { background: #2563eb; color: #fff; }
-        .btn-primary:hover { background: #1d4ed8; }
-        .btn-secondary { background: #e5e7eb; color: #222; text-decoration: none; display: inline-flex; align-items: center; }
-        .btn-secondary:hover { background: #d1d5db; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #eee; font-size: 14px; }
-        th { color: #555; font-weight: 600; font-size: 12px; text-transform: uppercase; }
-        td.num, th.num { text-align: right; }
-        .empty { color: #888; padding: 20px 0; text-align: center; }
-        .total-global { margin-top: 16px; background: #eef2ff; border-radius: 8px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .total-global .label { font-size: 14px; color: #3730a3; }
-        .total-global .value { font-size: 24px; font-weight: bold; color: #3730a3; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>Situation des comptes clients</h1>
-    <p class="subtitle">Côté opérateur — liste des clients et de leur solde actuel.</p>
+<?= $this->extend('admin/layout') ?>
 
-    <div class="card">
-        <h2>Rechercher un client</h2>
-        <form class="inline-form" action="<?= site_url('admin/comptes-clients') ?>" method="get">
-            <div class="field">
-                <label for="recherche">Numéro de téléphone</label>
-                <input type="text" id="recherche" name="recherche" placeholder="Ex: 033..." value="<?= esc($recherche ?? '') ?>">
-            </div>
-            <div class="field">
-                <button type="submit" class="btn btn-primary">Rechercher</button>
-            </div>
-            <?php if ($recherche !== null): ?>
-                <div class="field">
-                    <a class="btn btn-secondary" href="<?= site_url('admin/comptes-clients') ?>">Réinitialiser</a>
-                </div>
-            <?php endif; ?>
-        </form>
+<?= $this->section('content') ?>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-card border border-border rounded-xl p-5">
+        <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Clients trouvés</div>
+        <div class="text-2xl font-bold"><?= count($clients) ?></div>
     </div>
-
-    <div class="card">
-        <h2>Liste des clients</h2>
-
-        <?php if (empty($clients)): ?>
-            <p class="empty">Aucun client trouvé<?= $recherche !== null ? ' pour "' . esc($recherche) . '"' : '' ?>.</p>
-        <?php else: ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Numéro de téléphone</th>
-                        <th>Client depuis</th>
-                        <th class="num">Solde actuel (Ar)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($clients as $client): ?>
-                        <tr>
-                            <td><?= esc($client['numero_telephone']) ?></td>
-                            <td><?= esc($client['date_creation']) ?></td>
-                            <td class="num"><?= number_format((float) $client['solde'], 2, ',', ' ') ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
-            <div class="total-global">
-                <span class="label">Total des soldes <?= $recherche !== null ? 'affichés' : 'clients' ?></span>
-                <span class="value"><?= number_format($totalSoldes, 2, ',', ' ') ?> Ar</span>
-            </div>
-        <?php endif; ?>
+    <div class="bg-card border border-border rounded-xl p-5">
+        <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Total des soldes <?= $recherche !== null ? 'affichés' : '' ?></div>
+        <div class="text-2xl font-bold text-primary"><?= number_format($totalSoldes, 2, ',', ' ') ?> Ar</div>
+    </div>
+    <div class="bg-card border border-border rounded-xl p-5">
+        <div class="text-xs uppercase tracking-wider text-muted-foreground mb-1">Recherche active</div>
+        <div class="text-2xl font-bold font-mono"><?= $recherche !== null ? esc($recherche) : '—' ?></div>
     </div>
 </div>
-</body>
-</html>
+
+<div class="bg-card border border-border rounded-xl overflow-hidden">
+    <form class="px-6 py-4 border-b border-border flex items-center gap-3" action="<?= site_url('admin/comptes-clients') ?>" method="get">
+        <div class="flex-1 flex items-center gap-2 px-3 py-2 bg-background border border-border rounded-lg">
+            <?= icon('search', 'size-4') ?>
+            <input type="text" name="recherche" placeholder="Rechercher par numéro de téléphone…" value="<?= esc($recherche ?? '') ?>"
+                   class="flex-1 bg-transparent outline-none text-sm">
+        </div>
+        <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+            Rechercher
+        </button>
+        <?php if ($recherche !== null): ?>
+            <a href="<?= site_url('admin/comptes-clients') ?>" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm hover:bg-muted transition-colors">
+                <?= icon('rotate-ccw', 'size-4') ?> Réinitialiser
+            </a>
+        <?php endif; ?>
+    </form>
+
+    <?php if (empty($clients)): ?>
+        <p class="px-6 py-10 text-sm text-muted-foreground text-center">
+            Aucun client trouvé<?= $recherche !== null ? ' pour "' . esc($recherche) . '"' : '' ?>.
+        </p>
+    <?php else: ?>
+        <table class="w-full">
+            <thead class="bg-background border-b border-border">
+                <tr class="text-[11px] font-mono uppercase text-muted-foreground">
+                    <th class="px-6 py-3 text-left font-medium">Numéro</th>
+                    <th class="px-6 py-3 text-left font-medium">Client depuis</th>
+                    <th class="px-6 py-3 text-right font-medium">Solde actuel (Ar)</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+                <?php foreach ($clients as $client): ?>
+                    <tr class="hover:bg-background/50 transition-colors text-sm">
+                        <td class="px-6 py-4 font-mono"><?= esc($client['numero_telephone']) ?></td>
+                        <td class="px-6 py-4 text-xs text-muted-foreground"><?= esc($client['date_creation']) ?></td>
+                        <td class="px-6 py-4 text-right font-mono font-semibold"><?= number_format((float) $client['solde'], 2, ',', ' ') ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <div class="px-6 py-3 border-t border-border flex justify-between items-center text-xs text-muted-foreground">
+            <span class="font-mono"><?= count($clients) ?> compte(s) affiché(s)</span>
+            <span class="font-mono font-semibold text-foreground">Total : <?= number_format($totalSoldes, 2, ',', ' ') ?> Ar</span>
+        </div>
+    <?php endif; ?>
+</div>
+<?= $this->endSection() ?>

@@ -37,8 +37,10 @@ class BaremesFraisController extends BaseController
         }
 
         return view('admin/baremes/index', [
-            'groupes' => $groupes,
-            'types'   => $types,
+            'title'    => 'Barèmes de frais',
+            'subtitle' => "Configurez les frais par tranche de montant pour chaque type d'opération.",
+            'groupes'  => $groupes,
+            'types'    => $types,
         ]);
     }
 

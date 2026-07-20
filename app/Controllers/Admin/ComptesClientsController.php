@@ -30,6 +30,8 @@ class ComptesClientsController extends BaseController
         }
 
         return view('admin/comptes_clients/index', [
+            'title'       => 'Comptes clients',
+            'subtitle'    => 'Situation en temps réel des comptes clients et de leur solde.',
             'clients'     => $clients,
             'recherche'   => $recherche,
             'totalSoldes' => $totalSoldes,

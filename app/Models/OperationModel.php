@@ -40,4 +40,25 @@ class OperationModel extends Model
 
         return $builder->get()->getResultArray();
     }
+
+    /**
+     * Dernières opérations, avec le libellé du type et le numéro de
+     * téléphone du titulaire du compte source. Utilisé pour le tableau
+     * de bord opérateur.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function recentWithDetails(int $limit = 5): array
+    {
+        return $this->db->table('operations o')
+            ->select('o.id, o.montant, o.frais, o.date_operation, t.code, t.libelle, c.numero_telephone')
+            ->join('types_operation t', 't.id = o.type_operation_id')
+            ->join('comptes cpt', 'cpt.id = o.compte_id')
+            ->join('clients c', 'c.id = cpt.client_id')
+            ->orderBy('o.date_operation', 'DESC')
+            ->orderBy('o.id', 'DESC')
+            ->limit($limit)
+            ->get()
+            ->getResultArray();
+    }
 }

@@ -1,147 +1,113 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Configuration des préfixes opérateur</title>
-    <style>
-        body { font-family: Arial, Helvetica, sans-serif; background: #f4f6f8; margin: 0; padding: 0; color: #222; }
-        .container { max-width: 720px; margin: 40px auto; padding: 0 20px; }
-        h1 { font-size: 22px; margin-bottom: 4px; }
-        .subtitle { color: #666; margin-bottom: 24px; font-size: 14px; }
-        .card { background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); padding: 20px; margin-bottom: 24px; }
-        .card h2 { font-size: 16px; margin-top: 0; margin-bottom: 16px; }
-        .alert { padding: 10px 14px; border-radius: 6px; margin-bottom: 16px; font-size: 14px; }
-        .alert-success { background: #e6f4ea; color: #1e7e34; border: 1px solid #b7dfc1; }
-        .alert-error { background: #fdecea; color: #a12622; border: 1px solid #f5c6c2; }
-        .alert ul { margin: 0; padding-left: 18px; }
-        form.inline-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
-        .field { display: flex; flex-direction: column; gap: 4px; }
-        .field label { font-size: 12px; color: #555; }
-        .field input { padding: 8px 10px; border: 1px solid #ccd0d5; border-radius: 5px; font-size: 14px; }
-        .field input.prefixe-input { width: 90px; }
-        .field input.libelle-input { width: 220px; }
-        button, .btn { padding: 8px 16px; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; }
-        .btn-primary { background: #2563eb; color: #fff; }
-        .btn-primary:hover { background: #1d4ed8; }
-        .btn-secondary { background: #e5e7eb; color: #222; }
-        .btn-secondary:hover { background: #d1d5db; }
-        .btn-danger { background: #dc2626; color: #fff; }
-        .btn-danger:hover { background: #b91c1c; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #eee; font-size: 14px; }
-        th { color: #555; font-weight: 600; font-size: 12px; text-transform: uppercase; }
-        td.actions { display: flex; gap: 8px; }
-        .empty { color: #888; padding: 20px 0; text-align: center; }
-        .edit-row { display: none; background: #f9fafb; }
-        .edit-row.visible { display: table-row; }
-        .view-row.hidden { display: none; }
-        code.badge { background: #eef2ff; color: #3730a3; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>Configuration des préfixes opérateur</h1>
-    <p class="subtitle">Côté opérateur — préfixes valables pour l'identification des clients (ex: 033, 037).</p>
+<?= $this->extend('admin/layout') ?>
 
-    <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success"><?= esc(session()->getFlashdata('success')) ?></div>
-    <?php endif; ?>
-
-    <?php if (session()->getFlashdata('errors')): ?>
-        <div class="alert alert-error">
-            <ul>
-                <?php foreach (session()->getFlashdata('errors') as $error): ?>
-                    <li><?= esc($error) ?></li>
-                <?php endforeach; ?>
-            </ul>
+<?= $this->section('content') ?>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2 bg-card border border-border rounded-xl">
+        <div class="px-6 py-4 border-b border-border">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Préfixes autorisés</h2>
         </div>
-    <?php endif; ?>
-
-    <div class="card">
-        <h2>Ajouter un préfixe</h2>
-        <form class="inline-form" action="<?= site_url('admin/prefixes') ?>" method="post">
-            <?= csrf_field() ?>
-            <div class="field">
-                <label for="prefixe">Préfixe (3 chiffres)</label>
-                <input class="prefixe-input" type="text" id="prefixe" name="prefixe" maxlength="3" pattern="\d{3}" placeholder="033" value="<?= esc(old('prefixe')) ?>" required>
-            </div>
-            <div class="field">
-                <label for="libelle">Libellé (optionnel)</label>
-                <input class="libelle-input" type="text" id="libelle" name="libelle" maxlength="50" placeholder="Opérateur A" value="<?= esc(old('libelle')) ?>">
-            </div>
-            <div class="field">
-                <label>&nbsp;</label>
-                <button type="submit" class="btn btn-primary">Ajouter</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="card">
-        <h2>Préfixes existants</h2>
 
         <?php if (empty($prefixes)): ?>
-            <p class="empty">Aucun préfixe configuré pour le moment.</p>
+            <p class="px-6 py-8 text-sm text-muted-foreground text-center">Aucun préfixe configuré pour le moment.</p>
         <?php else: ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Préfixe</th>
-                        <th>Libellé</th>
-                        <th>Créé le</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($prefixes as $p): ?>
-                        <tr class="view-row" id="view-<?= (int) $p['id'] ?>">
-                            <td><code class="badge"><?= esc($p['prefixe']) ?></code></td>
-                            <td><?= esc($p['libelle'] ?: '—') ?></td>
-                            <td><?= esc($p['date_creation']) ?></td>
-                            <td class="actions">
-                                <button type="button" class="btn btn-secondary" onclick="toggleEdit(<?= (int) $p['id'] ?>)">Modifier</button>
-                                <form action="<?= site_url('admin/prefixes/' . (int) $p['id'] . '/delete') ?>" method="post" onsubmit="return confirm('Supprimer le préfixe <?= esc($p['prefixe'], 'js') ?> ?');">
-                                    <?= csrf_field() ?>
-                                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr class="edit-row" id="edit-<?= (int) $p['id'] ?>">
-                            <td colspan="4">
-                                <form class="inline-form" action="<?= site_url('admin/prefixes/' . (int) $p['id'] . '/update') ?>" method="post">
-                                    <?= csrf_field() ?>
-                                    <div class="field">
-                                        <label>Préfixe</label>
-                                        <input class="prefixe-input" type="text" name="prefixe" maxlength="3" pattern="\d{3}" value="<?= esc($p['prefixe']) ?>" required>
-                                    </div>
-                                    <div class="field">
-                                        <label>Libellé</label>
-                                        <input class="libelle-input" type="text" name="libelle" maxlength="50" value="<?= esc($p['libelle']) ?>">
-                                    </div>
-                                    <div class="field">
-                                        <label>&nbsp;</label>
-                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                    </div>
-                                    <div class="field">
-                                        <label>&nbsp;</label>
-                                        <button type="button" class="btn btn-secondary" onclick="toggleEdit(<?= (int) $p['id'] ?>)">Annuler</button>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <div class="divide-y divide-border">
+                <?php foreach ($prefixes as $p): ?>
+                    <div class="px-6 py-4 flex items-center justify-between" id="view-row-<?= (int) $p['id'] ?>">
+                        <div class="flex items-center gap-4">
+                            <div class="size-10 rounded-lg bg-primary-10 text-primary grid place-items-center font-mono font-semibold">
+                                <?= esc($p['prefixe']) ?>
+                            </div>
+                            <div>
+                                <div class="font-medium"><?= esc($p['libelle'] ?: '—') ?></div>
+                                <div class="text-xs text-muted-foreground font-mono">Ajouté le <?= esc($p['date_creation']) ?></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full bg-success-10 text-success">
+                                <?= icon('check', 'size-3') ?> Actif
+                            </span>
+                            <button type="button" onclick="toggleEdit(<?= (int) $p['id'] ?>)" class="size-8 rounded-md hover:bg-muted grid place-items-center text-muted-foreground hover:text-primary transition-colors">
+                                <?= icon('pencil', 'size-4') ?>
+                            </button>
+                            <form action="<?= site_url('admin/prefixes/' . (int) $p['id'] . '/delete') ?>" method="post" onsubmit="return confirm('Supprimer le préfixe <?= esc($p['prefixe'], 'js') ?> ?');">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="size-8 rounded-md hover:bg-destructive-10 grid place-items-center text-muted-foreground hover:text-destructive transition-colors">
+                                    <?= icon('trash-2', 'size-4') ?>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="edit-row-<?= (int) $p['id'] ?>" class="hidden px-6 py-4 bg-secondary/60 border-t border-border">
+                        <form class="flex flex-wrap items-end gap-3" action="<?= site_url('admin/prefixes/' . (int) $p['id'] . '/update') ?>" method="post">
+                            <?= csrf_field() ?>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-xs text-muted-foreground">Préfixe</label>
+                                <input type="text" name="prefixe" maxlength="3" pattern="\d{3}" value="<?= esc($p['prefixe']) ?>" required
+                                       class="w-24 px-3 py-1.5 rounded-md border border-input bg-background text-sm font-mono focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-xs text-muted-foreground">Libellé</label>
+                                <input type="text" name="libelle" maxlength="50" value="<?= esc($p['libelle']) ?>"
+                                       class="w-48 px-3 py-1.5 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+                            </div>
+                            <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+                                <?= icon('save', 'size-4') ?> Enregistrer
+                            </button>
+                            <button type="button" onclick="toggleEdit(<?= (int) $p['id'] ?>)" class="px-4 py-2 rounded-lg border border-border text-sm hover:bg-muted transition-colors">
+                                Annuler
+                            </button>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         <?php endif; ?>
+
+        <div class="px-6 py-4 border-t border-border bg-background/50 flex flex-wrap gap-3 items-end">
+            <form class="flex flex-wrap gap-3 items-end flex-1" action="<?= site_url('admin/prefixes') ?>" method="post">
+                <?= csrf_field() ?>
+                <div class="flex-1 min-w-[140px] flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg">
+                    <span class="text-muted-foreground font-mono text-sm">+261</span>
+                    <input type="text" name="prefixe" maxlength="3" pattern="\d{3}" placeholder="ex. 034" value="<?= esc(old('prefixe')) ?>" required
+                           class="flex-1 bg-transparent outline-none text-sm font-mono placeholder:text-muted-foreground/50">
+                </div>
+                <div class="flex-1 min-w-[160px] px-3 py-2 bg-card border border-border rounded-lg">
+                    <input type="text" name="libelle" maxlength="50" placeholder="Libellé (ex. Telma)" value="<?= esc(old('libelle')) ?>"
+                           class="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/50">
+                </div>
+                <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity">
+                    <?= icon('plus', 'size-4') ?> Ajouter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="bg-card border border-border rounded-xl p-6 space-y-5">
+        <div>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Règle de validation</h2>
+            <p class="text-sm text-muted-foreground">
+                Seuls les numéros commençant par un préfixe autorisé peuvent se connecter et effectuer des opérations.
+            </p>
+        </div>
+        <div class="p-4 rounded-lg bg-background border border-border font-mono text-xs">
+            <div class="text-muted-foreground mb-2">Exemple valide :</div>
+            <div class="text-foreground">+261 <span class="text-primary font-semibold">033</span> 45 678 90</div>
+        </div>
+        <div class="pt-4 border-t border-border">
+            <div class="text-xs text-muted-foreground mb-1">Format attendu</div>
+            <div class="font-mono text-sm">3 chiffres, sans doublon</div>
+        </div>
+        <div class="pt-4 border-t border-border">
+            <div class="text-xs text-muted-foreground mb-1">Total préfixes actifs</div>
+            <div class="text-2xl font-bold"><?= count($prefixes) ?></div>
+        </div>
     </div>
 </div>
 
 <script>
     function toggleEdit(id) {
-        var viewRow = document.getElementById('view-' + id);
-        var editRow = document.getElementById('edit-' + id);
-        viewRow.classList.toggle('hidden');
-        editRow.classList.toggle('visible');
+        document.getElementById('view-row-' + id).classList.toggle('hidden');
+        document.getElementById('edit-row-' + id).classList.toggle('hidden');
     }
 </script>
-</body>
-</html>
+<?= $this->endSection() ?>

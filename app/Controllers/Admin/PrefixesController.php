@@ -23,6 +23,8 @@ class PrefixesController extends BaseController
     public function index()
     {
         $data = [
+            'title'    => 'Préfixes réseau',
+            'subtitle' => "Définissez les préfixes de numéros valables pour l'inscription et les opérations.",
             'prefixes' => $this->prefixeModel->orderBy('prefixe', 'ASC')->findAll(),
         ];
 

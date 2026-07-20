@@ -33,6 +33,8 @@ class GainsController extends BaseController
         }
 
         return view('admin/gains/index', [
+            'title'           => 'Situation des gains',
+            'subtitle'        => "Revenus générés par les frais d'opérations (retraits et transferts).",
             'types'           => $this->typeModel->orderBy('id', 'ASC')->findAll(),
             'recap'           => $recap,
             'totalGlobal'     => $totalGlobal,

@@ -9,6 +9,8 @@ $routes->get('/', 'Home::index');
 
 // Côté opérateur (back-office)
 $routes->group('admin', function ($routes) {
+    $routes->get('', 'Admin\DashboardController::index');
+
     $routes->get('prefixes', 'Admin\PrefixesController::index');
     $routes->post('prefixes', 'Admin\PrefixesController::store');
     $routes->post('prefixes/(:num)/update', 'Admin\PrefixesController::update/$1');
