@@ -10,7 +10,7 @@ class CompteModel extends Model
     protected $primaryKey    = 'id';
     protected $returnType    = 'array';
     protected $useTimestamps = false;
-    protected $allowedFields = ['client_id', 'solde'];
+    protected $allowedFields = ['client_id', 'solde', 'credit_frais_retrait'];
 
     /**
      * Récupère le compte associé à un client.

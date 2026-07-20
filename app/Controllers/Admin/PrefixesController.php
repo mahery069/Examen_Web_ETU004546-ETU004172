@@ -36,9 +36,14 @@ class PrefixesController extends BaseController
      */
     public function store()
     {
+        $isInternal = (int) $this->request->getPost('is_internal') ?: 0;
+
         $data = [
-            'prefixe' => trim((string) $this->request->getPost('prefixe')),
-            'libelle' => trim((string) $this->request->getPost('libelle')),
+            'prefixe'                => trim((string) $this->request->getPost('prefixe')),
+            'libelle'                => trim((string) $this->request->getPost('libelle')),
+            'is_internal'            => $isInternal,
+            // La commission inter-opérateur n'a de sens que pour un préfixe externe.
+            'commission_pourcentage' => $isInternal ? 0 : (float) $this->request->getPost('commission_pourcentage'),
         ];
 
         if (! $this->prefixeModel->save($data)) {
@@ -62,10 +67,14 @@ class PrefixesController extends BaseController
             return redirect()->to('/admin/prefixes')->with('errors', ['Préfixe introuvable.']);
         }
 
+        $isInternal = (int) $this->request->getPost('is_internal') ?: 0;
+
         $data = [
-            'id'      => $id,
-            'prefixe' => trim((string) $this->request->getPost('prefixe')),
-            'libelle' => trim((string) $this->request->getPost('libelle')),
+            'id'                     => $id,
+            'prefixe'                => trim((string) $this->request->getPost('prefixe')),
+            'libelle'                => trim((string) $this->request->getPost('libelle')),
+            'is_internal'            => $isInternal,
+            'commission_pourcentage' => $isInternal ? 0 : (float) $this->request->getPost('commission_pourcentage'),
         ];
 
         if (! $this->prefixeModel->save($data)) {

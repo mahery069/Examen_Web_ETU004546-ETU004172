@@ -25,19 +25,35 @@ class GainsController extends BaseController
         $typeOperationId = $this->request->getGet('type_operation_id');
         $typeOperationId = ($typeOperationId === null || $typeOperationId === '') ? null : (int) $typeOperationId;
 
-        $recap = $this->operationModel->recapFraisParType($typeOperationId);
+        // Bloc 1 — gains internes : frais habituels du barème, tous types
+        // d'opération confondus (dépôt, retrait, transfert), qu'ils soient
+        // échangés entre clients internes ou vers un numéro externe.
+        $recapInterne = $this->operationModel->recapFraisParType($typeOperationId);
 
-        $totalGlobal = 0.0;
-        foreach ($recap as $ligne) {
-            $totalGlobal += (float) $ligne['total_frais'];
+        $totalInterne = 0.0;
+        foreach ($recapInterne as $ligne) {
+            $totalInterne += (float) $ligne['total_frais'];
+        }
+
+        // Bloc 2 — gains "autres opérateurs" : commission inter-opérateur
+        // perçue uniquement sur les transferts sortants vers un préfixe
+        // externe, distincte des frais internes classiques ci-dessus.
+        $recapExterne = $this->operationModel->recapCommissionParOperateurExterne();
+
+        $totalExterne = 0.0;
+        foreach ($recapExterne as $ligne) {
+            $totalExterne += (float) $ligne['total_commission'];
         }
 
         return view('admin/gains/index', [
             'title'           => 'Situation des gains',
-            'subtitle'        => "Revenus générés par les frais d'opérations (retraits et transferts).",
+            'subtitle'        => "Revenus générés par les frais d'opérations, avec le détail de la commission inter-opérateur.",
             'types'           => $this->typeModel->orderBy('id', 'ASC')->findAll(),
-            'recap'           => $recap,
-            'totalGlobal'     => $totalGlobal,
+            'recapInterne'    => $recapInterne,
+            'recapExterne'    => $recapExterne,
+            'totalInterne'    => $totalInterne,
+            'totalExterne'    => $totalExterne,
+            'totalGlobal'     => $totalInterne + $totalExterne,
             'typeOperationId' => $typeOperationId,
         ]);
     }
