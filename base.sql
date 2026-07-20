@@ -1,4 +1,16 @@
 
+-- ---------------------------------------------------------------------
+-- Table : operateurs
+-- Comptes de connexion pour le back-office (côté opérateur)
+-- ---------------------------------------------------------------------
+DROP TABLE IF EXISTS operateurs;
+CREATE TABLE operateurs (
+    id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    login          VARCHAR(50) NOT NULL UNIQUE,
+    mot_de_passe   VARCHAR(255) NOT NULL,
+    date_creation  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 DROP TABLE IF EXISTS prefixes_operateur;
 CREATE TABLE prefixes_operateur (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -138,3 +150,8 @@ INSERT INTO comptes (client_id, solde) VALUES
     (1, 50000),
     (2, 120000),
     (3, 0);
+
+-- Compte opérateur par défaut pour se connecter au back-office
+-- login: admin / mot de passe: admin123 (hashé avec password_hash(), à changer en prod)
+INSERT INTO operateurs (login, mot_de_passe) VALUES
+    ('admin', '$2y$10$Q0I8W0su/rshhHyEOW6cIO7C/7XneAe/ZwPTE2qn3g2cwatu6r7US');
