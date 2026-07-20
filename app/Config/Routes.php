@@ -20,4 +20,5 @@ $routes->group('client', ['filter' => 'clientAuth'], static function ($routes) {
     $routes->post('retrait', 'Client::retirer', ['as' => 'retirer']);
     $routes->get('transfert', 'Client::transfert', ['as' => 'transfert']);
     $routes->post('transfert', 'Client::transferer', ['as' => 'transferer']);
+    $routes->get('historique', 'Client::historique', ['as' => 'historique']);
 });

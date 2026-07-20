@@ -10,9 +10,6 @@ use App\Models\TypeOperationModel;
 
 /**
  * Espace du client connecté.
- *
- * NB : à ce stade, la vue "Historique" viendra compléter cet espace
- * dans la prochaine étape.
  */
 class Client extends BaseController
 {
@@ -301,5 +298,63 @@ class Client extends BaseController
         return redirect()->to('/client/solde')->with('succes', 'Transfert de '
             . number_format($montant, 2, ',', ' ') . ' Ar (frais : '
             . number_format($frais, 2, ',', ' ') . ' Ar) vers ' . $numeroDestinataire . ' effectué avec succès.');
+    }
+
+    /**
+     * Affiche l'historique chronologique des opérations du client
+     * connecté (dépôts, retraits, transferts envoyés/reçus).
+     */
+    public function historique()
+    {
+        $compteId = (int) session()->get('compte_id');
+
+        $operationModel = new OperationModel();
+        $operations     = $operationModel->historiqueDuCompte($compteId);
+
+        $lignes = array_map(static function (array $operation) use ($compteId) {
+            $estExpediteur = (int) $operation['compte_id'] === $compteId;
+
+            switch ($operation['type_code']) {
+                case 'depot':
+                    $libelle      = 'Dépôt';
+                    $contrepartie = null;
+                    $montantSigne = (float) $operation['montant'];
+                    break;
+
+                case 'retrait':
+                    $libelle      = 'Retrait';
+                    $contrepartie = null;
+                    $montantSigne = -((float) $operation['montant'] + (float) $operation['frais']);
+                    break;
+
+                case 'transfert':
+                    if ($estExpediteur) {
+                        $libelle      = 'Transfert envoyé';
+                        $contrepartie = $operation['numero_destinataire'];
+                        $montantSigne = -((float) $operation['montant'] + (float) $operation['frais']);
+                    } else {
+                        $libelle      = 'Transfert reçu';
+                        $contrepartie = $operation['numero_expediteur'];
+                        $montantSigne = (float) $operation['montant'];
+                    }
+                    break;
+
+                default:
+                    $libelle      = $operation['type_libelle'];
+                    $contrepartie = null;
+                    $montantSigne = (float) $operation['montant'];
+            }
+
+            return [
+                'libelle'       => $libelle,
+                'contrepartie'  => $contrepartie,
+                'montant'       => (float) $operation['montant'],
+                'frais'         => (float) $operation['frais'],
+                'montant_signe' => $montantSigne,
+                'date'          => $operation['date_operation'],
+            ];
+        }, $operations);
+
+        return view('client/historique', ['lignes' => $lignes]);
     }
 }

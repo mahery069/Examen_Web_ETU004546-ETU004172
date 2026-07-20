@@ -14,7 +14,7 @@
         <li><a href="<?= url_to('depot') ?>">Effectuer un dépôt</a></li>
         <li><a href="<?= url_to('retrait') ?>">Effectuer un retrait</a></li>
         <li><a href="<?= url_to('transfert') ?>">Effectuer un transfert</a></li>
-        <li>Historique : à venir</li>
+        <li><a href="<?= url_to('historique') ?>">Voir l'historique des opérations</a></li>
     </ul>
 
     <p>
