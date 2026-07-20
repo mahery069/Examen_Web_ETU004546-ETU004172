@@ -2,12 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Models\CompteModel;
+
 /**
  * Espace du client connecté.
  *
- * NB : à ce stade, seul le système de connexion est implémenté.
- * Les vues "Solde", "Dépôt", "Retrait", "Transfert" et "Historique"
- * viendront compléter cet espace dans les prochaines étapes.
+ * NB : à ce stade, les vues "Dépôt", "Retrait", "Transfert" et
+ * "Historique" viendront compléter cet espace dans les prochaines étapes.
  */
 class Client extends BaseController
 {
@@ -21,5 +22,21 @@ class Client extends BaseController
         ];
 
         return view('client/tableau_de_bord', $data);
+    }
+
+    /**
+     * Affiche le solde actuel du client connecté.
+     */
+    public function solde()
+    {
+        $compteModel = new CompteModel();
+        $compte      = $compteModel->find(session()->get('compte_id'));
+
+        $data = [
+            'numero_telephone' => session()->get('numero_telephone'),
+            'solde'            => $compte['solde'] ?? 0,
+        ];
+
+        return view('client/solde', $data);
     }
 }

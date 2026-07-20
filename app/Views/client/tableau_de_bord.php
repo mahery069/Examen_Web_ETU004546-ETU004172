@@ -10,7 +10,7 @@
     <p>Vous êtes connecté avec le numéro : <?= esc($numero_telephone) ?></p>
 
     <ul>
-        <li>Solde : à venir</li>
+        <li><a href="<?= url_to('solde') ?>">Voir mon solde</a></li>
         <li>Dépôt : à venir</li>
         <li>Retrait : à venir</li>
         <li>Transfert : à venir</li>
