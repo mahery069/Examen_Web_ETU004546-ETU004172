@@ -92,16 +92,22 @@
 ### ETU4172 — Côté Client
 
 - **Option "inclure les frais de retrait lors de l'envoi"**
-  - Case à cocher dans le formulaire de transfert : "le destinataire recevra le montant net après ses propres frais de retrait" (c'est-à-dire que l'expéditeur prend en charge par avance les frais que le destinataire paierait normalement en retirant)
-  - Si l'option est cochée : calcul du montant total à débiter chez l'expéditeur = montant envoyé + frais de transfert + frais de retrait estimés (selon le barème retrait pour ce montant)
-  - Si l'option n'est pas cochée : comportement actuel de la V1 (le destinataire paiera ses frais de retrait lui-même plus tard)
-  - Affichage clair du récapitulatif avant validation (montant reçu net vs frais totaux payés par l'expéditeur)
+Nouvelle case à cocher : "L'expéditeur paie les frais de retrait à la place du destinataire".
+
+    Si cochée : Montant débité = Montant envoyé + Frais de transfert + Frais de retrait estimés. Le destinataire reçoit le montant net, sans frais à payer au retrait.
+
+    Si décochée : Comportement actuel (le destinataire paie ses frais lors du retrait).
+
+    Écran de confirmation : Afficher clairement le montant net que recevra le destinataire et le total des frais payés par l'expéditeur.
 
 - **Envoi multiple vers plusieurs numéros** (division du montant entre plusieurs destinataires)
-  - Formulaire permettant d'ajouter plusieurs numéros de destinataires (liste dynamique)
-  - Choix de la répartition : montant total divisé équitablement entre tous les numéros (ou saisie d'un montant par destinataire, selon ce que vous choisissez d'implémenter)
-  - Vérification du solde suffisant chez l'expéditeur pour couvrir la somme de tous les envois + frais cumulés
-  - Une opération enregistrée par destinataire dans `operations` (ou une opération "groupée" reliée à plusieurs lignes, selon le modèle choisi), pour que l'historique reste cohérent
-  - Gestion des erreurs partielles (ex: un des numéros n'existe pas) — à clarifier en équipe : tout annuler ou envoyer aux numéros valides seulement
+Interface : Possibilité d'ajouter plusieurs numéros de téléphone via une liste dynamique.
 
+    Répartition du montant : Choix entre diviser le montant total équitablement ou saisir un montant par personne.
+
+    Contrôle du solde : Vérifier que le solde de l'expéditeur couvre la somme de tous les envois et de tous les frais cumulés.
+
+    Enregistrement en base (BDD) : Créer une ligne par destinataire dans la table operations pour garder un historique propre.
+
+    Gestion des erreurs (À trancher en équipe) : Si un numéro est invalide, faut-il tout annuler (mode "Tout ou rien") ou envoyer uniquement aux numéros valides ?
 ---

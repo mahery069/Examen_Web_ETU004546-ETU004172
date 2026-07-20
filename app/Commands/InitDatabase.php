@@ -51,8 +51,17 @@ class InitDatabase extends BaseCommand
         }
 
         $sqlite = new \SQLite3($dbPath);
-        $sqlite->exec('PRAGMA foreign_keys = ON;');
+
+        // Les DROP TABLE de base.sql suppriment les tables "parentes"
+        // (ex. prefixes_operateur) avant leurs tables "enfants" (ex.
+        // clients). Avec les clés étrangères activées, SQLite refuse de
+        // supprimer une table encore référencée par des lignes existantes :
+        // on désactive donc temporairement la vérification pendant le
+        // rechargement complet du schéma, puis on la réactive pour les
+        // usages normaux de l'application.
+        $sqlite->exec('PRAGMA foreign_keys = OFF;');
         $sqlite->exec(file_get_contents($sqlFile));
+        $sqlite->exec('PRAGMA foreign_keys = ON;');
         $sqlite->close();
 
         CLI::write("Base de données initialisée avec succès : {$dbPath}", 'green');

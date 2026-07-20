@@ -8,6 +8,7 @@
         ['to' => 'client/depot',           'label' => 'Dépôt',           'icon' => 'arrow-down-right'],
         ['to' => 'client/retrait',         'label' => 'Retrait',         'icon' => 'arrow-up-right'],
         ['to' => 'client/transfert',       'label' => 'Transfert',       'icon' => 'arrow-left-right'],
+        ['to' => 'client/envoi-multiple',  'label' => 'Envoi multiple',  'icon' => 'users'],
         ['to' => 'client/historique',      'label' => 'Historique',      'icon' => 'clock'],
     ];
 
@@ -17,6 +18,7 @@
         'client/depot'           => ['Effectuer un dépôt', 'Créditez votre compte instantanément.'],
         'client/retrait'         => ['Effectuer un retrait', 'Des frais sont appliqués selon le barème en vigueur.'],
         'client/transfert'       => ['Effectuer un transfert', 'Envoyez de l\'argent vers un autre client.'],
+        'client/envoi-multiple'  => ['Envoi multiple', 'Envoyez de l\'argent à plusieurs destinataires en une fois.'],
         'client/historique'      => ['Historique des opérations', 'Toutes vos opérations, du plus récent au plus ancien.'],
     ];
     [$pageTitle, $pageSubtitle] = $titres[$currentPath] ?? ['FluxPay', ''];

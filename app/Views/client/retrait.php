@@ -19,6 +19,13 @@
         </form>
     </div>
 
+    <?php if ((float) $credit_frais_retrait > 0): ?>
+        <div class="mt-4 px-4 py-3 rounded-lg bg-success-10 text-success text-xs text-center">
+            Vous bénéficiez d'un crédit de <?= number_format((float) $credit_frais_retrait, 2, ',', ' ') ?> Ar
+            sur vos frais de retrait (issu d'un transfert reçu avec frais inclus).
+        </div>
+    <?php endif; ?>
+
     <p class="text-xs text-muted-foreground mt-4 text-center">
         Des frais sont automatiquement calculés selon le barème en vigueur et ajoutés au montant retiré.
     </p>

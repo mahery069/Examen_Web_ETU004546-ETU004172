@@ -45,6 +45,10 @@ $routes->group('client', ['filter' => 'clientAuth'], static function ($routes) {
     $routes->get('retrait', 'Client::retrait', ['as' => 'retrait']);
     $routes->post('retrait', 'Client::retirer', ['as' => 'retirer']);
     $routes->get('transfert', 'Client::transfert', ['as' => 'transfert']);
-    $routes->post('transfert', 'Client::transferer', ['as' => 'transferer']);
+    $routes->post('transfert', 'Client::transfertApercu', ['as' => 'transfert_apercu']);
+    $routes->post('transfert/confirmer', 'Client::transferer', ['as' => 'transferer']);
+    $routes->get('envoi-multiple', 'Client::envoiMultiple', ['as' => 'envoi_multiple']);
+    $routes->post('envoi-multiple', 'Client::envoiMultipleApercu', ['as' => 'envoi_multiple_apercu']);
+    $routes->post('envoi-multiple/confirmer', 'Client::envoiMultipleConfirmer', ['as' => 'envoi_multiple_confirmer']);
     $routes->get('historique', 'Client::historique', ['as' => 'historique']);
 });
