@@ -68,9 +68,9 @@ class OperationModel extends Model
      * libellé du type d'opération ainsi que les numéros de téléphone de
      * l'expéditeur et, le cas échéant, du destinataire.
      */
-    public function historiqueDuCompte(int $compteId): array
+    public function historiqueDuCompte(int $compteId, ?int $limite = null): array
     {
-        return $this->db->table('operations o')
+        $builder = $this->db->table('operations o')
             ->select('o.id, o.montant, o.frais, o.date_operation, '
                 . 'o.compte_id, o.compte_destinataire_id, '
                 . 't.code AS type_code, t.libelle AS type_libelle, '
@@ -85,8 +85,12 @@ class OperationModel extends Model
                 ->where('o.compte_id', $compteId)
                 ->orWhere('o.compte_destinataire_id', $compteId)
             ->groupEnd()
-            ->orderBy('o.date_operation', 'DESC')
-            ->get()
-            ->getResultArray();
+            ->orderBy('o.date_operation', 'DESC');
+
+        if ($limite !== null) {
+            $builder->limit($limite);
+        }
+
+        return $builder->get()->getResultArray();
     }
 }

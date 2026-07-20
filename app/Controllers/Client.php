@@ -14,12 +14,28 @@ use App\Models\TypeOperationModel;
 class Client extends BaseController
 {
     /**
+     * Nombre de dernières opérations affichées sur le tableau de bord.
+     */
+    private const NB_OPERATIONS_RECENTES = 5;
+
+    /**
      * Page d'accueil de l'espace client, affichée juste après la connexion.
+     * Affiche un résumé : solde actuel et dernières opérations.
      */
     public function tableauDeBord()
     {
+        $compteId = (int) session()->get('compte_id');
+
+        $compteModel = new CompteModel();
+        $compte      = $compteModel->find($compteId);
+
+        $operationModel = new OperationModel();
+        $operations     = $operationModel->historiqueDuCompte($compteId, self::NB_OPERATIONS_RECENTES);
+
         $data = [
             'numero_telephone' => session()->get('numero_telephone'),
+            'solde'            => $compte['solde'] ?? 0,
+            'lignes'           => $this->formaterOperations($operations, $compteId),
         ];
 
         return view('client/tableau_de_bord', $data);
@@ -311,7 +327,20 @@ class Client extends BaseController
         $operationModel = new OperationModel();
         $operations     = $operationModel->historiqueDuCompte($compteId);
 
-        $lignes = array_map(static function (array $operation) use ($compteId) {
+        return view('client/historique', [
+            'lignes' => $this->formaterOperations($operations, $compteId),
+        ]);
+    }
+
+    /**
+     * Transforme une liste brute d'opérations (issue de
+     * OperationModel::historiqueDuCompte()) en lignes prêtes à l'affichage :
+     * libellé lisible, contrepartie (numéro) et effet signé sur le solde,
+     * du point de vue du compte passé en paramètre.
+     */
+    private function formaterOperations(array $operations, int $compteId): array
+    {
+        return array_map(static function (array $operation) use ($compteId) {
             $estExpediteur = (int) $operation['compte_id'] === $compteId;
 
             switch ($operation['type_code']) {
@@ -354,7 +383,5 @@ class Client extends BaseController
                 'date'          => $operation['date_operation'],
             ];
         }, $operations);
-
-        return view('client/historique', ['lignes' => $lignes]);
     }
 }
