@@ -14,6 +14,7 @@
         ['to' => 'admin/prefixes',      'label' => 'Préfixes réseau',    'icon' => 'radio'],
         ['to' => 'admin/baremes',       'label' => 'Barèmes de frais',   'icon' => 'receipt'],
         ['to' => 'admin/gains',         'label' => 'Situation des gains','icon' => 'trending-up'],
+        ['to' => 'admin/reglements',    'label' => 'Règlements inter-opérateurs', 'icon' => 'send'],
         ['to' => 'admin/comptes-clients', 'label' => 'Comptes clients', 'icon' => 'users'],
     ];
 ?>
