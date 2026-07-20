@@ -454,6 +454,267 @@ class Client extends BaseController
     }
 
     /**
+     * Affiche le formulaire d'envoi vers plusieurs destinataires.
+     */
+    public function envoiMultiple()
+    {
+        return view('client/envoi_multiple');
+    }
+
+    /**
+     * Vérifie et calcule un envoi groupé vers plusieurs destinataires.
+     *
+     * Chaque ligne (numéro + montant) est validée individuellement
+     * (format, montant, destinataire existant, pas soi-même, pas de
+     * doublon, barème disponible). Choix d'équipe assumé : en cas
+     * d'erreur sur au moins une ligne, l'envoi groupé est entièrement
+     * annulé (aucune ligne n'est exécutée), plutôt que d'envoyer
+     * partiellement aux numéros valides.
+     *
+     * @param list<string> $numeros
+     * @param list<string> $montants
+     *
+     * @return array{erreurs_lignes:list<string>}|array{erreur_globale:string}|array{lignes:list<array>,total_montant:float,total_frais:float,total_debit:float,compte_expediteur:array,type_transfert_id:int}
+     */
+    private function calculerEnvoiMultiple(
+        string $numeroExpediteur,
+        int $compteExpediteurId,
+        array $numeros,
+        array $montants,
+        bool $inclureFraisRetrait
+    ): array {
+        $clientModel        = new ClientModel();
+        $compteModel         = new CompteModel();
+        $typeOperationModel = new TypeOperationModel();
+        $baremeFraisModel    = new BaremeFraisModel();
+
+        $typeTransfert = $typeOperationModel->trouverParCode('transfert');
+        $typeRetrait   = $typeOperationModel->trouverParCode('retrait');
+
+        $lignes        = [];
+        $erreursLignes = [];
+        $numerosVus    = [];
+
+        $nbLignes = max(count($numeros), count($montants));
+
+        for ($i = 0; $i < $nbLignes; $i++) {
+            $numero      = trim((string) ($numeros[$i] ?? ''));
+            $montantBrut = $montants[$i] ?? '';
+            $ligneNo     = $i + 1;
+
+            // Ligne totalement vide (laissée de côté dans la liste dynamique) : ignorée silencieusement.
+            if ($numero === '' && ((string) $montantBrut) === '') {
+                continue;
+            }
+
+            if (! preg_match('/^0[0-9]{9}$/', $numero)) {
+                $erreursLignes[] = "Ligne {$ligneNo} : numéro invalide (10 chiffres, doit commencer par 0).";
+
+                continue;
+            }
+
+            if (! is_numeric($montantBrut) || (float) $montantBrut <= 0) {
+                $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : montant invalide.";
+
+                continue;
+            }
+
+            $montant = (float) $montantBrut;
+
+            if ($numero === $numeroExpediteur) {
+                $erreursLignes[] = "Ligne {$ligneNo} : vous ne pouvez pas vous envoyer de l'argent à vous-même.";
+
+                continue;
+            }
+
+            if (isset($numerosVus[$numero])) {
+                $erreursLignes[] = "Ligne {$ligneNo} : le numéro {$numero} est déjà utilisé à une autre ligne de cet envoi.";
+
+                continue;
+            }
+
+            $destinataire = $clientModel->trouverParNumero($numero);
+
+            if ($destinataire === null) {
+                $erreursLignes[] = "Ligne {$ligneNo} : le numéro \"{$numero}\" ne correspond à aucun client.";
+
+                continue;
+            }
+
+            $trancheTransfert = $baremeFraisModel->trouverTranche($typeTransfert['id'], $montant);
+
+            if ($trancheTransfert === null) {
+                $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : aucun barème de frais ne correspond à ce montant.";
+
+                continue;
+            }
+
+            $fraisTransfert     = (float) $trancheTransfert['frais'];
+            $fraisRetraitEstime = 0.0;
+
+            if ($inclureFraisRetrait) {
+                $trancheRetrait = $baremeFraisModel->trouverTranche($typeRetrait['id'], $montant);
+
+                if ($trancheRetrait === null) {
+                    $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : l'option \"frais de retrait inclus\" est indisponible pour ce montant.";
+
+                    continue;
+                }
+
+                $fraisRetraitEstime = (float) $trancheRetrait['frais'];
+            }
+
+            $numerosVus[$numero] = true;
+
+            $lignes[] = [
+                'numero'               => $numero,
+                'montant'              => $montant,
+                'destinataire'         => $destinataire,
+                'compte_destinataire'  => $compteModel->trouverParClient($destinataire['id']),
+                'frais_transfert'      => $fraisTransfert,
+                'frais_retrait_estime' => $fraisRetraitEstime,
+                'sous_total'           => $montant + $fraisTransfert + $fraisRetraitEstime,
+            ];
+        }
+
+        if (! empty($erreursLignes)) {
+            return ['erreurs_lignes' => $erreursLignes];
+        }
+
+        if (empty($lignes)) {
+            return ['erreur_globale' => 'Veuillez renseigner au moins un destinataire valide.'];
+        }
+
+        $totalMontant = array_sum(array_column($lignes, 'montant'));
+        $totalFrais   = array_sum(array_column($lignes, 'frais_transfert')) + array_sum(array_column($lignes, 'frais_retrait_estime'));
+        $totalDebit   = $totalMontant + $totalFrais;
+
+        $compteExpediteur = $compteModel->find($compteExpediteurId);
+
+        if ((float) $compteExpediteur['solde'] < $totalDebit) {
+            return ['erreur_globale' => 'Solde insuffisant pour cet envoi groupé. Total requis : '
+                . number_format($totalDebit, 2, ',', ' ') . ' Ar (solde actuel : '
+                . number_format((float) $compteExpediteur['solde'], 2, ',', ' ') . ' Ar).'];
+        }
+
+        return [
+            'lignes'            => $lignes,
+            'total_montant'     => $totalMontant,
+            'total_frais'       => $totalFrais,
+            'total_debit'       => $totalDebit,
+            'compte_expediteur' => $compteExpediteur,
+            'type_transfert_id' => $typeTransfert['id'],
+        ];
+    }
+
+    /**
+     * Étape 1 : valide l'envoi groupé et affiche un récapitulatif
+     * détaillé (par destinataire) avant toute écriture en base.
+     */
+    public function envoiMultipleApercu()
+    {
+        $numeros             = (array) $this->request->getPost('numero_destinataire');
+        $montants            = (array) $this->request->getPost('montant');
+        $inclureFraisRetrait = (bool) $this->request->getPost('inclure_frais_retrait');
+
+        $resultat = $this->calculerEnvoiMultiple(
+            session()->get('numero_telephone'),
+            (int) session()->get('compte_id'),
+            $numeros,
+            $montants,
+            $inclureFraisRetrait
+        );
+
+        if (isset($resultat['erreurs_lignes'])) {
+            return redirect()->back()->withInput()->with('erreurs', $resultat['erreurs_lignes']);
+        }
+
+        if (isset($resultat['erreur_globale'])) {
+            return redirect()->back()->withInput()->with('erreur', $resultat['erreur_globale']);
+        }
+
+        return view('client/envoi_multiple_apercu', [
+            'lignes'                => $resultat['lignes'],
+            'total_montant'         => $resultat['total_montant'],
+            'total_frais'           => $resultat['total_frais'],
+            'total_debit'           => $resultat['total_debit'],
+            'inclure_frais_retrait' => $inclureFraisRetrait,
+        ]);
+    }
+
+    /**
+     * Étape 2 : recalcule tout depuis la base (jamais confiance aux
+     * valeurs soumises) et exécute l'envoi groupé dans une transaction
+     * unique : un seul débit chez l'expéditeur pour le total, un crédit
+     * (+ crédit de frais de retrait éventuel) par destinataire, et une
+     * opération enregistrée par destinataire. Tout échec annule
+     * l'intégralité de l'envoi (aucune écriture partielle).
+     */
+    public function envoiMultipleConfirmer()
+    {
+        $numeros             = (array) $this->request->getPost('numero_destinataire');
+        $montants            = (array) $this->request->getPost('montant');
+        $inclureFraisRetrait = (bool) $this->request->getPost('inclure_frais_retrait');
+        $compteExpediteurId  = (int) session()->get('compte_id');
+
+        $resultat = $this->calculerEnvoiMultiple(
+            session()->get('numero_telephone'),
+            $compteExpediteurId,
+            $numeros,
+            $montants,
+            $inclureFraisRetrait
+        );
+
+        if (isset($resultat['erreurs_lignes']) || isset($resultat['erreur_globale'])) {
+            $erreur = $resultat['erreur_globale'] ?? "Une erreur est survenue, veuillez recommencer votre envoi.";
+
+            return redirect()->to('/client/envoi-multiple')->with('erreur', $erreur);
+        }
+
+        $compteModel    = new CompteModel();
+        $operationModel = new OperationModel();
+
+        $db = db_connect();
+        $db->transStart();
+
+        $compteExpediteur = $resultat['compte_expediteur'];
+
+        $compteModel->update($compteExpediteurId, [
+            'solde' => $compteExpediteur['solde'] - $resultat['total_debit'],
+        ]);
+
+        foreach ($resultat['lignes'] as $ligne) {
+            $compteDestinataire = $ligne['compte_destinataire'];
+
+            $donneesDestinataire = ['solde' => $compteDestinataire['solde'] + $ligne['montant']];
+
+            if ($ligne['frais_retrait_estime'] > 0) {
+                $donneesDestinataire['credit_frais_retrait'] = (float) ($compteDestinataire['credit_frais_retrait'] ?? 0) + $ligne['frais_retrait_estime'];
+            }
+
+            $compteModel->update($compteDestinataire['id'], $donneesDestinataire);
+
+            $operationModel->insert([
+                'compte_id'              => $compteExpediteurId,
+                'compte_destinataire_id' => $compteDestinataire['id'],
+                'type_operation_id'      => $resultat['type_transfert_id'],
+                'montant'                => $ligne['montant'],
+                'frais'                  => $ligne['frais_transfert'] + $ligne['frais_retrait_estime'],
+            ]);
+        }
+
+        $db->transComplete();
+
+        if (! $db->transStatus()) {
+            return redirect()->to('/client/envoi-multiple')->with('erreur', "L'envoi groupé a échoué, veuillez réessayer. Aucun montant n'a été débité.");
+        }
+
+        return redirect()->to('/client/solde')->with('succes', 'Envoi groupé effectué avec succès vers '
+            . count($resultat['lignes']) . ' destinataire(s), pour un total débité de '
+            . number_format($resultat['total_debit'], 2, ',', ' ') . ' Ar.');
+    }
+
+    /**
      * Affiche l'historique chronologique des opérations du client
      * connecté (dépôts, retraits, transferts envoyés/reçus).
      */

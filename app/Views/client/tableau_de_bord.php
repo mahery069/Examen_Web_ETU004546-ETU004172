@@ -30,6 +30,12 @@
         <div class="font-medium mb-1">Transfert</div>
         <div class="text-xs text-muted-foreground">Envoyez de l'argent à un autre client.</div>
     </a>
+
+    <a href="<?= url_to('envoi_multiple') ?>" class="bg-card border border-border rounded-xl p-5 hover:border-primary hover:shadow-md transition-all">
+        <div class="size-10 rounded-lg bg-accent text-accent-foreground grid place-items-center mb-3"><?= icon('users', 'size-5') ?></div>
+        <div class="font-medium mb-1">Envoi multiple</div>
+        <div class="text-xs text-muted-foreground">Envoyez à plusieurs destinataires en une fois.</div>
+    </a>
 </div>
 
 <div class="mt-6">
