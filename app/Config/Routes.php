@@ -7,8 +7,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-// Côté opérateur (back-office)
-$routes->group('admin', function ($routes) {
+// Authentification côté opérateur (back-office) — non protégée par le filtre
+$routes->get('admin/login', 'Admin\AuthController::showLogin');
+$routes->post('admin/login', 'Admin\AuthController::login');
+$routes->post('admin/logout', 'Admin\AuthController::logout');
+
+// Côté opérateur (back-office) — protégé par le filtre adminAuth
+$routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('', 'Admin\DashboardController::index');
 
     $routes->get('prefixes', 'Admin\PrefixesController::index');
