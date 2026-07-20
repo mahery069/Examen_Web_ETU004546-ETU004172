@@ -20,4 +20,6 @@ $routes->group('admin', function ($routes) {
     $routes->post('baremes/(:num)/delete', 'Admin\BaremesFraisController::delete/$1');
 
     $routes->get('gains', 'Admin\GainsController::index');
+
+    $routes->get('comptes-clients', 'Admin\ComptesClientsController::index');
 });
