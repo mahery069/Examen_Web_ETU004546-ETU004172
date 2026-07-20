@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BaremeFraisModel;
+use App\Models\ClientModel;
 use App\Models\CompteModel;
 use App\Models\OperationModel;
 use App\Models\TypeOperationModel;
@@ -10,8 +11,8 @@ use App\Models\TypeOperationModel;
 /**
  * Espace du client connecté.
  *
- * NB : à ce stade, les vues "Transfert" et "Historique" viendront
- * compléter cet espace dans les prochaines étapes.
+ * NB : à ce stade, la vue "Historique" viendra compléter cet espace
+ * dans la prochaine étape.
  */
 class Client extends BaseController
 {
@@ -187,5 +188,118 @@ class Client extends BaseController
         return redirect()->to('/client/solde')->with('succes', 'Retrait de '
             . number_format($montant, 2, ',', ' ') . ' Ar (frais : '
             . number_format($frais, 2, ',', ' ') . ' Ar) effectué avec succès.');
+    }
+
+    /**
+     * Affiche le formulaire de transfert.
+     */
+    public function transfert()
+    {
+        return view('client/transfert');
+    }
+
+    /**
+     * Traite le transfert entre le compte du client connecté (expéditeur)
+     * et le compte d'un autre client (destinataire) : vérifie l'existence
+     * du destinataire, applique les frais selon le barème, débite
+     * l'expéditeur (montant + frais), crédite le destinataire (montant)
+     * et enregistre une opération unique pour les deux comptes.
+     */
+    public function transferer()
+    {
+        $rules = [
+            'numero_destinataire' => [
+                'label' => 'Numéro du destinataire',
+                'rules' => 'required|regex_match[/^0[0-9]{9}$/]',
+                'errors' => [
+                    'required'    => 'Veuillez saisir le numéro du destinataire.',
+                    'regex_match' => 'Le numéro doit être composé de 10 chiffres et commencer par 0.',
+                ],
+            ],
+            'montant' => [
+                'label' => 'Montant',
+                'rules' => 'required|numeric|greater_than[0]',
+                'errors' => [
+                    'required'     => 'Veuillez saisir un montant.',
+                    'numeric'      => 'Le montant doit être un nombre.',
+                    'greater_than' => 'Le montant doit être supérieur à 0.',
+                ],
+            ],
+        ];
+
+        if (! $this->validate($rules)) {
+            return redirect()->back()->withInput()->with('erreurs', $this->validator->getErrors());
+        }
+
+        $numeroDestinataire = $this->request->getPost('numero_destinataire');
+        $montant             = (float) $this->request->getPost('montant');
+        $numeroExpediteur    = session()->get('numero_telephone');
+        $compteExpediteurId  = (int) session()->get('compte_id');
+
+        if ($numeroDestinataire === $numeroExpediteur) {
+            return redirect()->back()->withInput()->with('erreur', 'Vous ne pouvez pas effectuer un transfert vers votre propre numéro.');
+        }
+
+        $clientModel = new ClientModel();
+        $destinataire = $clientModel->trouverParNumero($numeroDestinataire);
+
+        if ($destinataire === null) {
+            return redirect()->back()->withInput()->with('erreur', "Le numéro \"{$numeroDestinataire}\" ne correspond à aucun client.");
+        }
+
+        $compteModel        = new CompteModel();
+        $compteDestinataire = $compteModel->trouverParClient($destinataire['id']);
+
+        $typeOperationModel = new TypeOperationModel();
+        $typeTransfert       = $typeOperationModel->trouverParCode('transfert');
+
+        $baremeFraisModel = new BaremeFraisModel();
+        $tranche          = $baremeFraisModel->trouverTranche($typeTransfert['id'], $montant);
+
+        if ($tranche === null) {
+            return redirect()->back()->withInput()->with('erreur', "Aucun barème de frais ne correspond à ce montant. Veuillez contacter l'opérateur.");
+        }
+
+        $frais = (float) $tranche['frais'];
+        $total = $montant + $frais;
+
+        $compteExpediteur = $compteModel->find($compteExpediteurId);
+
+        if ((float) $compteExpediteur['solde'] < $total) {
+            return redirect()->back()->withInput()->with('erreur', 'Solde insuffisant. Montant + frais requis : '
+                . number_format($total, 2, ',', ' ') . ' Ar (solde actuel : '
+                . number_format((float) $compteExpediteur['solde'], 2, ',', ' ') . ' Ar).');
+        }
+
+        $operationModel = new OperationModel();
+
+        $db = db_connect();
+        $db->transStart();
+
+        $compteModel->update($compteExpediteurId, [
+            'solde' => $compteExpediteur['solde'] - $total,
+        ]);
+
+        $compteModel->update($compteDestinataire['id'], [
+            'solde' => $compteDestinataire['solde'] + $montant,
+        ]);
+
+        $operationModel->insert([
+            'compte_id'              => $compteExpediteurId,
+            'compte_destinataire_id' => $compteDestinataire['id'],
+            'type_operation_id'      => $typeTransfert['id'],
+            'montant'                => $montant,
+            'frais'                  => $frais,
+        ]);
+
+        $db->transComplete();
+
+        if (! $db->transStatus()) {
+            return redirect()->back()->withInput()->with('erreur', 'Le transfert a échoué, veuillez réessayer.');
+        }
+
+        return redirect()->to('/client/solde')->with('succes', 'Transfert de '
+            . number_format($montant, 2, ',', ' ') . ' Ar (frais : '
+            . number_format($frais, 2, ',', ' ') . ' Ar) vers ' . $numeroDestinataire . ' effectué avec succès.');
     }
 }
