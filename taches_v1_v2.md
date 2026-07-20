@@ -64,3 +64,44 @@
   - Liste chronologique des opérations du client (dépôt, retrait, transfert envoyé/reçu)
   - Affichage du type d'opération, du montant, des frais éventuels et de la date
 
+
+## Version 2 (tag `v2`) 
+
+### ETU4546 — Côté Opérateur (Back-office)
+
+- **Configuration des préfixes valables pour les autres opérateurs** (ex: 032, 031, etc.)
+  - Ajout d'une colonne (ou d'un champ) permettant de distinguer un préfixe "opérateur interne" (le nôtre) d'un préfixe "autre opérateur" dans `prefixes_operateur`
+  - Formulaire d'ajout de préfixe externe, avec le même contrôle de format que les préfixes internes
+  - Liste séparée (ou filtrable) : préfixes internes vs préfixes des autres opérateurs
+
+- **Configuration du % de commission pour les transferts vers les autres opérateurs**
+  - Nouvelle table/notion de "commission inter-opérateur" (pourcentage appliqué en plus du barème de frais classique, uniquement quand le destinataire est sur un préfixe externe)
+  - Interface pour définir/modifier ce pourcentage (éventuellement par opérateur externe si plusieurs sont configurés)
+  - Logique de calcul : frais habituels du barème + (montant × % commission) quand le transfert sort vers un autre opérateur
+
+- **Page "Situation des gains" : séparation opérateur / autres opérateurs**
+  - Distinguer, dans le calcul des gains, les opérations effectuées entre clients internes de celles allant vers un numéro d'un autre opérateur
+  - Affichage de deux blocs (ou deux colonnes) : gains internes vs gains liés aux transferts sortants vers d'autres opérateurs
+  - Le gain "autres opérateurs" correspond à la commission perçue, distincte des frais internes classiques
+
+- **Vue "Situation des montants à envoyer à chaque opérateur"**
+  - Table de réconciliation : pour chaque transfert sortant vers un autre opérateur, le montant net dû à cet opérateur (montant transféré, hors commission gardée par notre opérateur)
+  - Regroupement par opérateur externe (somme des montants dus à chacun)
+  - Objectif : simuler le règlement inter-opérateurs (ce que notre opérateur doit reverser aux autres opérateurs pour les fonds reçus par leurs clients)
+
+### ETU4172 — Côté Client
+
+- **Option "inclure les frais de retrait lors de l'envoi"**
+  - Case à cocher dans le formulaire de transfert : "le destinataire recevra le montant net après ses propres frais de retrait" (c'est-à-dire que l'expéditeur prend en charge par avance les frais que le destinataire paierait normalement en retirant)
+  - Si l'option est cochée : calcul du montant total à débiter chez l'expéditeur = montant envoyé + frais de transfert + frais de retrait estimés (selon le barème retrait pour ce montant)
+  - Si l'option n'est pas cochée : comportement actuel de la V1 (le destinataire paiera ses frais de retrait lui-même plus tard)
+  - Affichage clair du récapitulatif avant validation (montant reçu net vs frais totaux payés par l'expéditeur)
+
+- **Envoi multiple vers plusieurs numéros** (division du montant entre plusieurs destinataires)
+  - Formulaire permettant d'ajouter plusieurs numéros de destinataires (liste dynamique)
+  - Choix de la répartition : montant total divisé équitablement entre tous les numéros (ou saisie d'un montant par destinataire, selon ce que vous choisissez d'implémenter)
+  - Vérification du solde suffisant chez l'expéditeur pour couvrir la somme de tous les envois + frais cumulés
+  - Une opération enregistrée par destinataire dans `operations` (ou une opération "groupée" reliée à plusieurs lignes, selon le modèle choisi), pour que l'historique reste cohérent
+  - Gestion des erreurs partielles (ex: un des numéros n'existe pas) — à clarifier en équipe : tout annuler ou envoyer aux numéros valides seulement
+
+---
