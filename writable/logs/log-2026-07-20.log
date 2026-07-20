@@ -1,0 +1,1087 @@
+ERROR - 2026-07-20 06:54:34 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:54:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:55:04 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:55:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:35 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:37 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:38 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:38 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:38 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:38 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:38 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:39 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:39 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:39 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:39 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:39 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 06:59:46 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 06:59:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:00:32 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:00:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:00:34 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:00:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:01:33 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:01:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:11:00 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:11:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:11:01 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(868): CodeIgniter\BaseModel->validate()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(752): CodeIgniter\Model->insert()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(42): CodeIgniter\BaseModel->save()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->store()
+#14 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#20 {main}
+CRITICAL - 2026-07-20 07:11:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: POST, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 6 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 7 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 8 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+ 9 SYSTEMPATH/BaseModel.php(868): CodeIgniter\BaseModel->validate()
+10 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+11 SYSTEMPATH/BaseModel.php(752): CodeIgniter\Model->insert()
+12 APPPATH/Controllers/Admin/PrefixesController.php(42): CodeIgniter\BaseModel->save()
+13 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->store()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+19 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:11:01 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:11:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:12:51 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(615): CodeIgniter\Model->doFind()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(57): CodeIgniter\BaseModel->find()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->update()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:12:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: POST, Route: admin/prefixes/2/update]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(615): CodeIgniter\Model->doFind()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(57): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->update()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:13:08 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(868): CodeIgniter\BaseModel->validate()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(668): CodeIgniter\BaseModel->insert()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(752): CodeIgniter\Model->insert()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(42): CodeIgniter\BaseModel->save()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->store()
+#14 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#15 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#16 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#17 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#18 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#19 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#20 {main}
+CRITICAL - 2026-07-20 07:13:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: POST, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Validation/Rules.php(175): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/Validation/StrictRules/Rules.php(187): CodeIgniter\Validation\Rules->is_unique()
+ 6 SYSTEMPATH/Validation/Validation.php(345): CodeIgniter\Validation\StrictRules\Rules->is_unique()
+ 7 SYSTEMPATH/Validation/Validation.php(210): CodeIgniter\Validation\Validation->processRules()
+ 8 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+ 9 SYSTEMPATH/BaseModel.php(868): CodeIgniter\BaseModel->validate()
+10 SYSTEMPATH/Model.php(668): CodeIgniter\BaseModel->insert()
+11 SYSTEMPATH/BaseModel.php(752): CodeIgniter\Model->insert()
+12 APPPATH/Controllers/Admin/PrefixesController.php(42): CodeIgniter\BaseModel->save()
+13 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->store()
+14 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+15 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+16 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+17 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+18 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+19 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:13:40 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(615): CodeIgniter\Model->doFind()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(85): CodeIgniter\BaseModel->find()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->delete()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:13:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: POST, Route: admin/prefixes/2/delete]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(615): CodeIgniter\Model->doFind()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(85): CodeIgniter\BaseModel->find()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->delete()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+ERROR - 2026-07-20 07:14:35 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+#4 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+#5 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+#6 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/app/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+#7 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+#8 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+#9 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+#12 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php(59): CodeIgniter\Boot::bootWeb()
+#13 /home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/system/rewrite.php(44): require_once('...')
+#14 {main}
+CRITICAL - 2026-07-20 07:14:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: GET, Route: admin/prefixes]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query()
+ 4 SYSTEMPATH/Model.php(253): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH/BaseModel.php(676): CodeIgniter\Model->doFindAll()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(26): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->index()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 07:15:30 --> CodeIgniter\Exceptions\LogicException: No validation rules for the placeholder: "id". You must set the validation rules for the field. See <https://codeigniter4.github.io/userguide/libraries/validation.html#validation-placeholders>.
+[Method: POST, Route: admin/prefixes/6/update]
+in SYSTEMPATH/Validation/Validation.php on line 812.
+ 1 SYSTEMPATH/Validation/Validation.php(155): CodeIgniter\Validation\Validation->fillPlaceholders()
+ 2 SYSTEMPATH/BaseModel.php(1615): CodeIgniter\Validation\Validation->run()
+ 3 SYSTEMPATH/BaseModel.php(1046): CodeIgniter\BaseModel->validate()
+ 4 SYSTEMPATH/Model.php(709): CodeIgniter\BaseModel->update()
+ 5 SYSTEMPATH/BaseModel.php(750): CodeIgniter\Model->update()
+ 6 APPPATH/Controllers/Admin/PrefixesController.php(69): CodeIgniter\BaseModel->save()
+ 7 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\Admin\PrefixesController->update()
+ 8 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:33:32 --> ParseError: Unclosed '{' on line 16
+[Method: GET, Route: v1/models]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 7 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:33:36 --> ParseError: Unclosed '{' on line 16
+[Method: GET, Route: v1/models]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 7 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:34:33 --> ParseError: Unclosed '{' on line 16
+[Method: CLI, Route: serve]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 3 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 4 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()

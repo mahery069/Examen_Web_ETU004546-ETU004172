@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1784531428;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:7:"prefixe";s:3:"039";s:7:"libelle";s:4:"Test";}}__ci_vars|a:3:{s:13:"_ci_old_input";s:3:"new";s:6:"errors";s:3:"new";s:10:"old_action";s:3:"new";}errors|a:1:{s:7:"prefixe";s:26:"Ce préfixe existe déjà.";}old_action|s:6:"create";
