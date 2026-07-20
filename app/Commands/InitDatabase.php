@@ -17,6 +17,10 @@ class InitDatabase extends BaseCommand
     protected $name        = 'db:init';
     protected $description = 'Crée/réinitialise la base SQLite à partir de base.sql';
 
+    protected $options = [
+        '--force' => 'Ecrase le fichier de base existant sans demander de confirmation.',
+    ];
+
     public function run(array $params)
     {
         $sqlFile = ROOTPATH . 'base.sql';
@@ -34,8 +38,9 @@ class InitDatabase extends BaseCommand
         }
 
         $dbPath = WRITEPATH . 'database.db';
+        $force  = array_key_exists('force', $params) || CLI::getOption('force');
 
-        if (is_file($dbPath)) {
+        if (is_file($dbPath) && ! $force) {
             CLI::write("Un fichier de base existe déjà : {$dbPath}", 'yellow');
 
             if (CLI::prompt('Voulez-vous le réinitialiser (les données seront perdues) ?', ['y', 'n']) !== 'y') {

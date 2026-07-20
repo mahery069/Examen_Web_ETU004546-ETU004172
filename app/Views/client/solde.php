@@ -7,6 +7,10 @@
 <body>
     <h1>Mon solde</h1>
 
+    <?php if (session()->getFlashdata('succes')) : ?>
+        <p><?= esc(session()->getFlashdata('succes')) ?></p>
+    <?php endif; ?>
+
     <p>Numéro de téléphone : <?= esc($numero_telephone) ?></p>
 
     <p>Solde actuel : <?= esc(number_format((float) $solde, 2, ',', ' ')) ?> Ar</p>
