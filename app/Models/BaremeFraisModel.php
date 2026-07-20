@@ -92,11 +92,7 @@ class BaremeFraisModel extends Model
         }
 
         return ['tranches' => $tranches, 'gaps' => $gaps];
-    protected $table         = 'baremes_frais';
-    protected $primaryKey    = 'id';
-    protected $returnType    = 'array';
-    protected $useTimestamps = false;
-    protected $allowedFields = ['type_operation_id', 'montant_min', 'montant_max', 'frais'];
+    }
 
     /**
      * Recherche la tranche de frais correspondant à un montant, pour un

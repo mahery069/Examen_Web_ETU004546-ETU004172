@@ -30,9 +30,6 @@ class PrefixeOperateurModel extends Model
     ];
 
     protected $skipValidation = false;
-    protected $useSoftDeletes   = false;
-    protected $useTimestamps    = false;
-    protected $allowedFields    = ['prefixe', 'libelle'];
 
     /**
      * Vérifie si un préfixe (les 3 premiers chiffres d'un numéro) est

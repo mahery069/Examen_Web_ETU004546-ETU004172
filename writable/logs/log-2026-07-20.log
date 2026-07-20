@@ -1058,3 +1058,30 @@ in SYSTEMPATH/Validation/Validation.php on line 812.
 11 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
 12 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
 13 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:33:32 --> ParseError: Unclosed '{' on line 16
+[Method: GET, Route: v1/models]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 7 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:33:36 --> ParseError: Unclosed '{' on line 16
+[Method: GET, Route: v1/models]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+ 7 SYSTEMPATH/rewrite.php(44): require_once('/home/harison/Documents/GitHub/Examen_Web_ETU004546-ETU004172/public/index.php')
+CRITICAL - 2026-07-20 09:34:33 --> ParseError: Unclosed '{' on line 16
+[Method: CLI, Route: serve]
+in APPPATH/Config/Routes.php on line 49.
+ 1 SYSTEMPATH/CLI/Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 3 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 4 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()

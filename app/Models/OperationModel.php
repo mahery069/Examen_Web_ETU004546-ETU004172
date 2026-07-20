@@ -58,6 +58,11 @@ class OperationModel extends Model
             ->orderBy('o.date_operation', 'DESC')
             ->orderBy('o.id', 'DESC')
             ->limit($limit)
+            ->get()
+            ->getResultArray();
+    }
+
+    /**
      * Historique des opérations d'un compte (envoyées et reçues),
      * du plus récent au plus ancien. Chaque ligne est enrichie avec le
      * libellé du type d'opération ainsi que les numéros de téléphone de

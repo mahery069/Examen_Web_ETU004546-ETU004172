@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Auth::index');
 
 // Authentification côté opérateur (back-office) — non protégée par le filtre
 $routes->get('admin/login', 'Admin\AuthController::showLogin');
@@ -29,12 +29,14 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
     $routes->get('gains', 'Admin\GainsController::index');
 
     $routes->get('comptes-clients', 'Admin\ComptesClientsController::index');
-$routes->get('/', 'Auth::index');
+});
 
+// Authentification côté client (connexion automatique par numéro de téléphone)
 $routes->get('connexion', 'Auth::index', ['as' => 'connexion']);
 $routes->post('connexion', 'Auth::login', ['as' => 'login']);
 $routes->get('deconnexion', 'Auth::logout', ['as' => 'logout']);
 
+// Côté client — protégé par le filtre clientAuth
 $routes->group('client', ['filter' => 'clientAuth'], static function ($routes) {
     $routes->get('tableau-de-bord', 'Client::tableauDeBord', ['as' => 'tableau_de_bord']);
     $routes->get('solde', 'Client::solde', ['as' => 'solde']);

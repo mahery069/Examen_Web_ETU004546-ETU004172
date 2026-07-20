@@ -27,8 +27,6 @@ abstract class BaseController extends Controller
 
     // protected $session;
 
-    protected $helpers = ['url', 'form'];
-
     /**
      * Helpers to be loaded automatically for every controller extending this one.
      *
