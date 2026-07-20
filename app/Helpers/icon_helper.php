@@ -34,6 +34,7 @@ if (! function_exists('icon')) {
             'arrow-up-right'   => '<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>',
             'clock'            => '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
             'log-in'           => '<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/>',
+            'send'             => '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
         ];
 
         if (! isset($paths[$name])) {

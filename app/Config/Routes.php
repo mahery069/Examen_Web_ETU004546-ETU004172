@@ -28,6 +28,8 @@ $routes->group('admin', ['filter' => 'adminAuth'], function ($routes) {
 
     $routes->get('gains', 'Admin\GainsController::index');
 
+    $routes->get('reglements', 'Admin\ReglementsController::index');
+
     $routes->get('comptes-clients', 'Admin\ComptesClientsController::index');
 });
 
