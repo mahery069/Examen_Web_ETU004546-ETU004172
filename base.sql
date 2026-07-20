@@ -62,12 +62,18 @@ CREATE TABLE clients (
 -- ---------------------------------------------------------------------
 -- Table : comptes
 -- Solde associé à chaque client (1 client = 1 compte pour la V1)
+--
+-- V2 (ETU4172) : ajout de `credit_frais_retrait`, un crédit provénant
+-- de transferts reçus avec l'option "frais de retrait inclus". Ce
+-- crédit vient réduire (ou annuler) les frais du/des prochains retraits
+-- de ce compte, à hauteur du montant prépayé par l'expéditeur.
 -- ---------------------------------------------------------------------
 DROP TABLE IF EXISTS comptes;
 CREATE TABLE comptes (
-    id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    client_id  INTEGER NOT NULL UNIQUE,
-    solde      DECIMAL(12,2) NOT NULL DEFAULT 0,
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    client_id             INTEGER NOT NULL UNIQUE,
+    solde                 DECIMAL(12,2) NOT NULL DEFAULT 0,
+    credit_frais_retrait  DECIMAL(12,2) NOT NULL DEFAULT 0,
     FOREIGN KEY (client_id) REFERENCES clients(id)
 );
 
