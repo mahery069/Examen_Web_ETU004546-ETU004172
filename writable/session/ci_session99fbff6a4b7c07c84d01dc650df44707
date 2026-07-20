@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1784540732;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:1:{s:16:"numero_telephone";s:10:"0994455999";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:6:"erreur";s:3:"old";}erreur|s:53:"Le préfixe "099" n'est pas reconnu par l'opérateur.";_ci_previous_url|s:41:"http://localhost:8080/index.php/connexion";
