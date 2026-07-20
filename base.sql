@@ -16,6 +16,7 @@ CREATE TABLE prefixes_operateur (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,
     prefixe       VARCHAR(3) NOT NULL UNIQUE,
     libelle       VARCHAR(50),
+    is_internal   BOOLEAN DEFAULT TRUE NOT NULL,
     date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -100,10 +101,10 @@ CREATE TABLE operations (
 -- DONNÉES DE TEST (SEED)
 -- =====================================================================
 
--- Préfixes valables (Telma)
-INSERT INTO prefixes_operateur (prefixe, libelle) VALUES
-    ('034', 'Telma'),
-    ('038', 'Telma');
+-- Préfixes valables (Telma - interne)
+INSERT INTO prefixes_operateur (prefixe, libelle, is_internal) VALUES
+    ('034', 'Telma', 1),
+    ('038', 'Telma', 1);
 
 -- Types d'opérations
 INSERT INTO types_operation (code, libelle) VALUES

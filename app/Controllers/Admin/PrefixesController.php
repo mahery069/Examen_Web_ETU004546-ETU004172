@@ -39,6 +39,7 @@ class PrefixesController extends BaseController
         $data = [
             'prefixe' => trim((string) $this->request->getPost('prefixe')),
             'libelle' => trim((string) $this->request->getPost('libelle')),
+            'is_internal' => (int) $this->request->getPost('is_internal') ?: 0,
         ];
 
         if (! $this->prefixeModel->save($data)) {
@@ -66,6 +67,7 @@ class PrefixesController extends BaseController
             'id'      => $id,
             'prefixe' => trim((string) $this->request->getPost('prefixe')),
             'libelle' => trim((string) $this->request->getPost('libelle')),
+            'is_internal' => (int) $this->request->getPost('is_internal') ?: 0,
         ];
 
         if (! $this->prefixeModel->save($data)) {
