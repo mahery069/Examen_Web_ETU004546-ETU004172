@@ -94,13 +94,10 @@ CREATE TABLE operations (
 -- DONNÉES DE TEST (SEED)
 -- =====================================================================
 
--- Préfixes valables
+-- Préfixes valables (Telma)
 INSERT INTO prefixes_operateur (prefixe, libelle) VALUES
-    ('033', 'Opérateur A'),
-    ('032', 'Opérateur A'),
-    ('034', 'Opérateur A'),
-    ('037', 'Opérateur B'),
-    ('038', 'Opérateur B');
+    ('034', 'Telma'),
+    ('038', 'Telma');
 
 -- Types d'opérations
 INSERT INTO types_operation (code, libelle) VALUES
@@ -139,11 +136,11 @@ INSERT INTO baremes_frais (type_operation_id, montant_min, montant_max, frais) V
 -- Si besoin, ajouter des lignes dans baremes_frais avec type_operation_id = 1.
 
 -- Clients fictifs de test
--- Rappel des prefixe_id : 1=033, 2=032, 3=034, 4=037, 5=038
+-- Rappel des prefixe_id : 1=034, 2=038
 INSERT INTO clients (numero_telephone, prefixe_id) VALUES
-    ('0331234567', 1),
-    ('0339876543', 1),
-    ('0371122334', 4);
+    ('0341234567', 1),
+    ('0349876543', 1),
+    ('0381122334', 2);
 
 -- Comptes associés avec un solde de départ
 INSERT INTO comptes (client_id, solde) VALUES
