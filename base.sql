@@ -88,8 +88,14 @@ CREATE TABLE comptes (
     client_id             INTEGER NOT NULL UNIQUE,
     solde                 DECIMAL(12,2) NOT NULL DEFAULT 0,
     credit_frais_retrait  DECIMAL(12,2) NOT NULL DEFAULT 0,
-    FOREIGN KEY (client_id) REFERENCES clients(id)
+    epargne_solde DECIMAL(12,2) NOT NULL DEFAULT 0,
+    epargne_pourcentage DECIMAL(12,2) NOT NULL DEFAULT 0,
+
+    FOREIGN KEY (client_id) REFERENCES clients(id),
+     CHECK (commission_pourcentage >= 0 AND commission_pourcentage <= 100)
 );
+
+
 
 -- ---------------------------------------------------------------------
 -- Table : operations

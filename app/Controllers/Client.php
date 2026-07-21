@@ -54,10 +54,53 @@ class Client extends BaseController
             'numero_telephone'     => session()->get('numero_telephone'),
             'solde'                => $compte['solde'] ?? 0,
             'credit_frais_retrait' => $compte['credit_frais_retrait'] ?? 0,
+            'epargne_solde' =>$compte['epargne_solde']??0,
+            'epargne_pourcentage' =>$compte['epargne_pourcentage']??0,
         ];
 
         return view('client/solde', $data);
     }
+public function epargne(){
+$compteModel = new CompteModel();
+$compte = $compteModel->find(int(session()->get('compte_id')));
+
+return view ('/client/epargne')[
+    'epargne_pourcentage' => (float) ($compte['epargne_pourcentage'] ??0),
+    'epargne_sodle' => (float) ($compte['epargne_sodle'] ??0),
+];
+
+}
+
+
+        public function mettreAjourEpargne()
+        {
+    $rules= [
+
+    'epargne_pourcentage' =>  [
+        'rules'=> 'Pourcentage epargne',
+        'label' => 'required[numeric[greater_than_equal_to[0]less_than_equal_to[100]',
+        'errors' => [
+            'required'=> 'Veuillex saisr un pourcentage',
+            'numeric'=> 'doit etre un nombre',
+            'greater_than_equal_to' => 'doit etre superieur ou egal a 0',
+            'less_than_equal_to' => 'doit etre inferierur ou egal a 0'
+
+
+        ],
+    ]
+    ];
+
+    if( ! $this->validate($rules)){
+            return redirect()->back()->withInput()->with('erreurs', $this->getError());
+
+        }
+        $pourcentage = round ((float) $this->request-getPost('epargen_pourcentage'),2);
+        $compteModel = new CompteModel();
+        $copmteModel->update(int) sessiono()->get('compte_id'),[
+            'epargne_pourcentage'=> $pourcentage,
+        ]
+
+        return redirect()->to('client/epargnr')->with('success', 'POurcent d epargene ok' : {$pourcentage}%.");
 
     /**
      * Affiche le formulaire de dépôt.
@@ -752,5 +795,6 @@ class Client extends BaseController
         return redirect()->to('/client/solde')->with('succes', 'Envoi groupé effectué avec succès vers '
             . count($resultat['lignes']) . ' destinataire(s), pour un total débité de '
             . number_format($resultat['total_debit'], 2, ',', ' ') . ' Ar.');
+           
     }
 }

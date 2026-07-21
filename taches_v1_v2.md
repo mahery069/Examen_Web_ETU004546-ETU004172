@@ -115,3 +115,18 @@ Interface : Possibilité d'ajouter plusieurs numéros de téléphone via une lis
 --promotion pourcentage pour les frais de transfert
  Creation table  promotion (fait)
  imclusion de cette table 
+
+ --Notion epargne :
+ pour chaque client il choisi qui epargner (page ajouter par exemple 20% epargener ) pour chaque client
+ a chaque transfert viens ici par exemple pour moi donc 20 % vers epargne et 80 % vers transfert
+
+ page pour choisur la pourcentage 
+
+
+## 4172:
+-creation table epargne 
+--creation compte_epargne
+
+
+regle de gestion :  % du transfert et l un vers epargne et l autre pour le transfert 
+
