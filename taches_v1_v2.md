@@ -111,3 +111,7 @@ Interface : Possibilité d'ajouter plusieurs numéros de téléphone via une lis
 
     Gestion des erreurs (À trancher en équipe) : Si un numéro est invalide, faut-il tout annuler (mode "Tout ou rien") ou envoyer uniquement aux numéros valides ?
 ---
+
+--promotion pourcentage pour les frais de transfert
+ Creation table  promotion (fait)
+ imclusion de cette table 

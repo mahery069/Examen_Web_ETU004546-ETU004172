@@ -113,6 +113,20 @@ CREATE TABLE operations (
     FOREIGN KEY (type_operation_id) REFERENCES types_operation(id)
 );
 
+CREATE TABLE promotions_frais(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom VARCHAR(100) NOT NULL,
+    pourcentage_remise DECIMAL(12,2) NOT NULL DEFAULT 0,
+    type_operation_id  INTEGER NOT NULL,
+    actif BOOLEAN NOT NULL DEFAULT 1,
+    date_debut DATETIME,
+    date_fin DATETIME,
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (type_operation_id) REFERENCES types_operation(id),
+    CHECK (pourcentage_remise >0 AND pourcentage_remise <100)
+
+)
+
 -- =====================================================================
 -- DONNÉES DE TEST (SEED)
 -- =====================================================================

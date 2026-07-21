@@ -134,5 +134,7 @@ class BaremesFraisController extends BaseController
 
         return redirect()->to('/admin/baremes')
             ->with('success', 'Tranche enregistrée avec succès.');
-    }
+    }public function 
+
+
 }
