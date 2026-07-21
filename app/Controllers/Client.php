@@ -75,12 +75,12 @@ class Client extends BaseController
     {
         $rules = [
             'montant' => [
-                'label' => 'Montant',
-                'rules' => 'required|numeric|greater_than[0]',
+                'label'  => 'Montant',
+                'rules'  => 'required|numeric|greater_than[0]',
                 'errors' => [
-                    'required'      => 'Veuillez saisir un montant.',
-                    'numeric'       => 'Le montant doit être un nombre.',
-                    'greater_than'  => 'Le montant doit être supérieur à 0.',
+                    'required'     => 'Veuillez saisir un montant.',
+                    'numeric'      => 'Le montant doit être un nombre.',
+                    'greater_than' => 'Le montant doit être supérieur à 0.',
                 ],
             ],
         ];
@@ -109,8 +109,8 @@ class Client extends BaseController
         $operationModel->insert([
             'compte_id'         => $compteId,
             'type_operation_id' => $typeDepot['id'],
-            'montant'           => $montant,
-            'frais'             => 0,
+            'montant'          => $montant,
+            'frais'            => 0,
         ]);
 
         $db->transComplete();
@@ -144,8 +144,8 @@ class Client extends BaseController
     {
         $rules = [
             'montant' => [
-                'label' => 'Montant',
-                'rules' => 'required|numeric|greater_than[0]',
+                'label'  => 'Montant',
+                'rules'  => 'required|numeric|greater_than[0]',
                 'errors' => [
                     'required'     => 'Veuillez saisir un montant.',
                     'numeric'      => 'Le montant doit être un nombre.',
@@ -162,7 +162,7 @@ class Client extends BaseController
         $compteId = (int) session()->get('compte_id');
 
         $typeOperationModel = new TypeOperationModel();
-        $typeRetrait         = $typeOperationModel->trouverParCode('retrait');
+        $typeRetrait        = $typeOperationModel->trouverParCode('retrait');
 
         $baremeFraisModel = new BaremeFraisModel();
         $tranche          = $baremeFraisModel->trouverTranche($typeRetrait['id'], $montant);
@@ -176,9 +176,6 @@ class Client extends BaseController
         $compteModel = new CompteModel();
         $compte      = $compteModel->find($compteId);
 
-        // V2 : un crédit de frais de retrait peut avoir été prépayé par
-        // l'expéditeur d'un transfert reçu (option "frais de retrait
-        // inclus"). Il vient réduire, voire annuler, les frais de ce retrait.
         $creditDisponible = (float) ($compte['credit_frais_retrait'] ?? 0);
         $creditConsomme   = min($creditDisponible, $fraisBareme);
         $frais            = $fraisBareme - $creditConsomme;
@@ -203,8 +200,8 @@ class Client extends BaseController
         $operationModel->insert([
             'compte_id'         => $compteId,
             'type_operation_id' => $typeRetrait['id'],
-            'montant'           => $montant,
-            'frais'             => $frais,
+            'montant'          => $montant,
+            'frais'            => $frais,
         ]);
 
         $db->transComplete();
@@ -233,23 +230,22 @@ class Client extends BaseController
     }
 
     /**
-     * Règles de validation communes à l'aperçu et à la confirmation du
-     * transfert (numéro du destinataire + montant).
+     * Règles de validation communes à l'aperçu et à la confirmation du transfert.
      */
     private function reglesTransfert(): array
     {
         return [
             'numero_destinataire' => [
-                'label' => 'Numéro du destinataire',
-                'rules' => 'required|regex_match[/^0[0-9]{9}$/]',
+                'label'  => 'Numéro du destinataire',
+                'rules'  => 'required|regex_match[/^0[0-9]{9}$/]',
                 'errors' => [
                     'required'    => 'Veuillez saisir le numéro du destinataire.',
                     'regex_match' => 'Le numéro doit être composé de 10 chiffres et commencer par 0.',
                 ],
             ],
             'montant' => [
-                'label' => 'Montant',
-                'rules' => 'required|numeric|greater_than[0]',
+                'label'  => 'Montant',
+                'rules'  => 'required|numeric|greater_than[0]',
                 'errors' => [
                     'required'     => 'Veuillez saisir un montant.',
                     'numeric'      => 'Le montant doit être un nombre.',
@@ -260,14 +256,7 @@ class Client extends BaseController
     }
 
     /**
-     * Vérifie et calcule toutes les données nécessaires à un transfert :
-     * existence du destinataire, frais de transfert, frais de retrait
-     * estimés (si l'option est demandée) et solde suffisant chez
-     * l'expéditeur. Recalculé systématiquement à partir des données
-     * fraîches de la base (jamais à partir de valeurs soumises par le
-     * client), à l'aperçu comme à la confirmation.
-     *
-     * @return array{erreur:string}|array{destinataire:array,compte_destinataire:array,compte_expediteur:array,type_transfert_id:int,frais_transfert:float,frais_retrait_estime:float,total_debit:float}
+     * Calcule toutes les données nécessaires à un transfert.
      */
     private function calculerTransfert(
         string $numeroExpediteur,
@@ -287,15 +276,15 @@ class Client extends BaseController
             return ['erreur' => "Le numéro \"{$numeroDestinataire}\" ne correspond à aucun client."];
         }
 
-        $compteModel         = new CompteModel();
-        $compteDestinataire  = $compteModel->trouverParClient($destinataire['id']);
+        $compteModel        = new CompteModel();
+        $compteDestinataire = $compteModel->trouverParClient($destinataire['id']);
 
         $typeOperationModel = new TypeOperationModel();
-        $typeTransfert       = $typeOperationModel->trouverParCode('transfert');
-        $typeRetrait         = $typeOperationModel->trouverParCode('retrait');
+        $typeTransfert      = $typeOperationModel->trouverParCode('transfert');
+        $typeRetrait        = $typeOperationModel->trouverParCode('retrait');
 
-        $baremeFraisModel  = new BaremeFraisModel();
-        $trancheTransfert  = $baremeFraisModel->trouverTranche($typeTransfert['id'], $montant);
+        $baremeFraisModel = new BaremeFraisModel();
+        $trancheTransfert = $baremeFraisModel->trouverTranche($typeTransfert['id'], $montant);
 
         if ($trancheTransfert === null) {
             return ['erreur' => "Aucun barème de frais ne correspond à ce montant. Veuillez contacter l'opérateur."];
@@ -314,9 +303,6 @@ class Client extends BaseController
             $fraisRetraitEstime = (float) $trancheRetrait['frais'];
         }
 
-        // Commission inter-opérateur : s'applique en plus des frais habituels
-        // du barème lorsque le destinataire est sur un préfixe externe
-        // (numéro d'un autre opérateur).
         $prefixeModel = new PrefixeOperateurModel();
         $commission   = $prefixeModel->calculerCommission($destinataire['prefixe_id'] ?? null, $montant);
 
@@ -343,10 +329,7 @@ class Client extends BaseController
     }
 
     /**
-     * Étape 1 : valide le formulaire de transfert et affiche un
-     * récapitulatif (montant net reçu, frais de transfert, frais de
-     * retrait prépayés éventuels, total débité) avant toute écriture en
-     * base.
+     * Étape 1 : aperçu du transfert.
      */
     public function transfertApercu()
     {
@@ -372,22 +355,17 @@ class Client extends BaseController
 
         return view('client/transfert_apercu', [
             'numero_destinataire'   => $numeroDestinataire,
-            'montant'                => $montant,
-            'inclure_frais_retrait'  => $inclureFraisRetrait,
-            'frais_transfert'        => $resultat['frais_transfert'],
-            'frais_retrait_estime'   => $resultat['frais_retrait_estime'],
-            'total_debit'            => $resultat['total_debit'],
+            'montant'               => $montant,
+            'inclure_frais_retrait' => $inclureFraisRetrait,
+            'frais_transfert'       => $resultat['frais_transfert'],
+            'frais_retrait_estime'  => $resultat['frais_retrait_estime'],
+            'commission'            => $resultat['commission'],
+            'total_debit'           => $resultat['total_debit'],
         ]);
     }
 
     /**
-     * Étape 2 : exécute réellement le transfert (appelé depuis le
-     * formulaire de confirmation de l'aperçu). Recalcule tout depuis la
-     * base pour ne jamais faire confiance à des montants soumis par le
-     * client. Débite l'expéditeur (montant + frais + frais de retrait
-     * prépayés éventuels), crédite le destinataire (montant net) et, si
-     * l'option est activée, alimente son crédit de frais de retrait pour
-     * que son prochain retrait en bénéficie.
+     * Étape 2 : exécution du transfert.
      */
     public function transferer()
     {
@@ -414,9 +392,10 @@ class Client extends BaseController
 
         $compteDestinataire = $resultat['compte_destinataire'];
         $compteExpediteur   = $resultat['compte_expediteur'];
-        $fraisTransfert      = $resultat['frais_transfert'];
-        $fraisRetraitEstime  = $resultat['frais_retrait_estime'];
-        $totalDebit          = $resultat['total_debit'];
+        $fraisTransfert     = $resultat['frais_transfert'];
+        $fraisRetraitEstime = $resultat['frais_retrait_estime'];
+        $commission         = $resultat['commission'];
+        $totalDebit         = $resultat['total_debit'];
 
         $compteModel    = new CompteModel();
         $operationModel = new OperationModel();
@@ -467,8 +446,7 @@ class Client extends BaseController
     }
 
     /**
-     * Affiche l'historique chronologique des opérations du client
-     * connecté (dépôts, retraits, transferts envoyés/reçus).
+     * Affiche l'historique chronologique des opérations.
      */
     public function historique()
     {
@@ -483,10 +461,7 @@ class Client extends BaseController
     }
 
     /**
-     * Transforme une liste brute d'opérations (issue de
-     * OperationModel::historiqueDuCompte()) en lignes prêtes à l'affichage :
-     * libellé lisible, contrepartie (numéro) et effet signé sur le solde,
-     * du point de vue du compte passé en paramètre.
+     * Formate les opérations pour l'affichage.
      */
     private function formaterOperations(array $operations, int $compteId): array
     {
@@ -510,7 +485,7 @@ class Client extends BaseController
                     if ($estExpediteur) {
                         $libelle      = 'Transfert envoyé';
                         $contrepartie = $operation['numero_destinataire'];
-                        $montantSigne = -((float) $operation['montant'] + (float) $operation['frais'] + (float) $operation['commission']);
+                        $montantSigne = -((float) $operation['montant'] + (float) $operation['frais'] + (float) ($operation['commission'] ?? 0));
                     } else {
                         $libelle      = 'Transfert reçu';
                         $contrepartie = $operation['numero_expediteur'];
@@ -534,5 +509,248 @@ class Client extends BaseController
                 'date'          => $operation['date_operation'],
             ];
         }, $operations);
+    }
+
+    /**
+     * Affiche le formulaire d'envoi vers plusieurs destinataires.
+     */
+    public function envoiMultiple()
+    {
+        return view('client/envoi_multiple');
+    }
+
+    /**
+     * Calcule un envoi groupé vers plusieurs destinataires.
+     */
+    private function calculerEnvoiMultiple(
+        string $numeroExpediteur,
+        int $compteExpediteurId,
+        array $numeros,
+        array $montants,
+        bool $inclureFraisRetrait
+    ): array {
+        $clientModel          = new ClientModel();
+        $compteModel          = new CompteModel();
+        $typeOperationModel   = new TypeOperationModel();
+        $baremeFraisModel     = new BaremeFraisModel();
+        $prefixeOperateurModel = new PrefixeOperateurModel();
+
+        $typeTransfert = $typeOperationModel->trouverParCode('transfert');
+        $typeRetrait   = $typeOperationModel->trouverParCode('retrait');
+
+        $lignes        = [];
+        $erreursLignes = [];
+        $numerosVus    = [];
+
+        $nbLignes = max(count($numeros), count($montants));
+
+        for ($i = 0; $i < $nbLignes; $i++) {
+            $numero      = trim((string) ($numeros[$i] ?? ''));
+            $montantBrut = $montants[$i] ?? '';
+            $ligneNo     = $i + 1;
+
+            if ($numero === '' && ((string) $montantBrut) === '') {
+                continue;
+            }
+
+            if (! preg_match('/^0[0-9]{9}$/', $numero)) {
+                $erreursLignes[] = "Ligne {$ligneNo} : numéro invalide (10 chiffres, doit commencer par 0).";
+                continue;
+            }
+
+            if (! is_numeric($montantBrut) || (float) $montantBrut <= 0) {
+                $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : montant invalide.";
+                continue;
+            }
+
+            $montant = (float) $montantBrut;
+
+            if ($numero === $numeroExpediteur) {
+                $erreursLignes[] = "Ligne {$ligneNo} : vous ne pouvez pas vous envoyer de l'argent à vous-même.";
+                continue;
+            }
+
+            if (isset($numerosVus[$numero])) {
+                $erreursLignes[] = "Ligne {$ligneNo} : le numéro {$numero} est déjà utilisé à une autre ligne de cet envoi.";
+                continue;
+            }
+
+            $destinataire = $clientModel->trouverParNumero($numero);
+
+            if ($destinataire === null) {
+                $erreursLignes[] = "Ligne {$ligneNo} : le numéro \"{$numero}\" ne correspond à aucun client.";
+                continue;
+            }
+
+            $trancheTransfert = $baremeFraisModel->trouverTranche($typeTransfert['id'], $montant);
+
+            if ($trancheTransfert === null) {
+                $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : aucun barème de frais ne correspond à ce montant.";
+                continue;
+            }
+
+            $fraisTransfert     = (float) $trancheTransfert['frais'];
+            $fraisRetraitEstime = 0.0;
+
+            if ($inclureFraisRetrait) {
+                $trancheRetrait = $baremeFraisModel->trouverTranche($typeRetrait['id'], $montant);
+
+                if ($trancheRetrait === null) {
+                    $erreursLignes[] = "Ligne {$ligneNo} ({$numero}) : l'option \"frais de retrait inclus\" est indisponible pour ce montant.";
+                    continue;
+                }
+
+                $fraisRetraitEstime = (float) $trancheRetrait['frais'];
+            }
+
+            $commission = $prefixeOperateurModel->calculerCommission($destinataire['prefixe_id'] ?? null, $montant);
+
+            $numerosVus[$numero] = true;
+
+            $lignes[] = [
+                'numero'               => $numero,
+                'montant'              => $montant,
+                'destinataire'         => $destinataire,
+                'compte_destinataire'  => $compteModel->trouverParClient($destinataire['id']),
+                'frais_transfert'      => $fraisTransfert,
+                'frais_retrait_estime' => $fraisRetraitEstime,
+                'commission'           => $commission,
+                'sous_total'           => $montant + $fraisTransfert + $fraisRetraitEstime + $commission,
+            ];
+        }
+
+        if (! empty($erreursLignes)) {
+            return ['erreurs_lignes' => $erreursLignes];
+        }
+
+        if (empty($lignes)) {
+            return ['erreur_globale' => 'Veuillez renseigner au moins un destinataire valide.'];
+        }
+
+        $totalMontant    = array_sum(array_column($lignes, 'montant'));
+        $totalFrais      = array_sum(array_column($lignes, 'frais_transfert')) + array_sum(array_column($lignes, 'frais_retrait_estime'));
+        $totalCommission = array_sum(array_column($lignes, 'commission'));
+        $totalDebit      = $totalMontant + $totalFrais + $totalCommission;
+
+        $compteExpediteur = $compteModel->find($compteExpediteurId);
+
+        if ((float) $compteExpediteur['solde'] < $totalDebit) {
+            return ['erreur_globale' => 'Solde insuffisant pour cet envoi groupé. Total requis : '
+                . number_format($totalDebit, 2, ',', ' ') . ' Ar (solde actuel : '
+                . number_format((float) $compteExpediteur['solde'], 2, ',', ' ') . ' Ar).'];
+        }
+
+        return [
+            'lignes'            => $lignes,
+            'total_montant'     => $totalMontant,
+            'total_frais'       => $totalFrais,
+            'total_commission'  => $totalCommission,
+            'total_debit'       => $totalDebit,
+            'compte_expediteur' => $compteExpediteur,
+            'type_transfert_id' => $typeTransfert['id'],
+        ];
+    }
+
+    /**
+     * Étape 1 : aperçu de l'envoi groupé.
+     */
+    public function envoiMultipleApercu()
+    {
+        $numeros             = (array) $this->request->getPost('numero_destinataire');
+        $montants            = (array) $this->request->getPost('montant');
+        $inclureFraisRetrait = (bool) $this->request->getPost('inclure_frais_retrait');
+
+        $resultat = $this->calculerEnvoiMultiple(
+            session()->get('numero_telephone'),
+            (int) session()->get('compte_id'),
+            $numeros,
+            $montants,
+            $inclureFraisRetrait
+        );
+
+        if (isset($resultat['erreurs_lignes'])) {
+            return redirect()->back()->withInput()->with('erreurs', $resultat['erreurs_lignes']);
+        }
+
+        if (isset($resultat['erreur_globale'])) {
+            return redirect()->back()->withInput()->with('erreur', $resultat['erreur_globale']);
+        }
+
+        return view('client/envoi_multiple_apercu', [
+            'lignes'                => $resultat['lignes'],
+            'total_montant'         => $resultat['total_montant'],
+            'total_frais'           => $resultat['total_frais'],
+            'total_commission'      => $resultat['total_commission'],
+            'total_debit'           => $resultat['total_debit'],
+            'inclure_frais_retrait' => $inclureFraisRetrait,
+        ]);
+    }
+
+    /**
+     * Étape 2 : confirmation de l'envoi groupé.
+     */
+    public function envoiMultipleConfirmer()
+    {
+        $numeros             = (array) $this->request->getPost('numero_destinataire');
+        $montants            = (array) $this->request->getPost('montant');
+        $inclureFraisRetrait = (bool) $this->request->getPost('inclure_frais_retrait');
+        $compteExpediteurId  = (int) session()->get('compte_id');
+
+        $resultat = $this->calculerEnvoiMultiple(
+            session()->get('numero_telephone'),
+            $compteExpediteurId,
+            $numeros,
+            $montants,
+            $inclureFraisRetrait
+        );
+
+        if (isset($resultat['erreurs_lignes']) || isset($resultat['erreur_globale'])) {
+            $erreur = $resultat['erreur_globale'] ?? "Une erreur est survenue, veuillez recommencer votre envoi.";
+
+            return redirect()->to('/client/envoi-multiple')->with('erreur', $erreur);
+        }
+
+        $compteModel    = new CompteModel();
+        $operationModel = new OperationModel();
+
+        $db = db_connect();
+        $db->transStart();
+
+        $compteExpediteur = $resultat['compte_expediteur'];
+
+        $compteModel->update($compteExpediteurId, [
+            'solde' => $compteExpediteur['solde'] - $resultat['total_debit'],
+        ]);
+
+        foreach ($resultat['lignes'] as $ligne) {
+            $compteDestinataire = $ligne['compte_destinataire'];
+
+            $donneesDestinataire = ['solde' => $compteDestinataire['solde'] + $ligne['montant']];
+
+            if ($ligne['frais_retrait_estime'] > 0) {
+                $donneesDestinataire['credit_frais_retrait'] = (float) ($compteDestinataire['credit_frais_retrait'] ?? 0) + $ligne['frais_retrait_estime'];
+            }
+
+            $compteModel->update($compteDestinataire['id'], $donneesDestinataire);
+
+            $operationModel->insert([
+                'compte_id'              => $compteExpediteurId,
+                'compte_destinataire_id' => $compteDestinataire['id'],
+                'type_operation_id'      => $resultat['type_transfert_id'],
+                'montant'                => $ligne['montant'],
+                'frais'                  => $ligne['frais_transfert'] + $ligne['frais_retrait_estime'],
+                'commission'             => $ligne['commission'],
+            ]);
+        }
+
+        $db->transComplete();
+
+        if (! $db->transStatus()) {
+            return redirect()->to('/client/envoi-multiple')->with('erreur', "L'envoi groupé a échoué, veuillez réessayer. Aucun montant n'a été débité.");
+        }
+
+        return redirect()->to('/client/solde')->with('succes', 'Envoi groupé effectué avec succès vers '
+            . count($resultat['lignes']) . ' destinataire(s), pour un total débité de '
+            . number_format($resultat['total_debit'], 2, ',', ' ') . ' Ar.');
     }
 }
